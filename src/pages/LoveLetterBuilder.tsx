@@ -12,10 +12,12 @@ interface Letter {
   createdAt: Date;
 }
 
+type StoredLetter = Omit<Letter, 'createdAt'> & { createdAt: string };
+
 const LoveLetterBuilder = () => {
   const [letters, setLetters] = useState<Letter[]>(() => {
     const saved = localStorage.getItem('loveLetters');
-    return saved ? JSON.parse(saved).map((l: any) => ({ ...l, createdAt: new Date(l.createdAt) })) : [];
+    return saved ? (JSON.parse(saved) as StoredLetter[]).map((letter) => ({ ...letter, createdAt: new Date(letter.createdAt) })) : [];
   });
   const [currentLetter, setCurrentLetter] = useState<Letter>({
     id: '',

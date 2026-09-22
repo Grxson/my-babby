@@ -11,11 +11,13 @@ interface VoiceMessage {
   waveform?: number[];
 }
 
+type StoredVoiceMessage = Omit<VoiceMessage, 'createdAt'> & { createdAt: string };
+
 const VoiceRecorder = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [messages, setMessages] = useState<VoiceMessage[]>(() => {
     const saved = localStorage.getItem('voiceMessages');
-    return saved ? JSON.parse(saved).map((m: any) => ({ ...m, createdAt: new Date(m.createdAt) })) : [];
+    return saved ? (JSON.parse(saved) as StoredVoiceMessage[]).map((message) => ({ ...message, createdAt: new Date(message.createdAt) })) : [];
   });
   const [currentMessage, setCurrentMessage] = useState<VoiceMessage | null>(null);
   const [recordingTime, setRecordingTime] = useState(0);

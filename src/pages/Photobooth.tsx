@@ -11,6 +11,8 @@ interface Photo {
   template?: string;
 }
 
+type StoredPhoto = Omit<Photo, 'timestamp'> & { timestamp: string };
+
 interface Template {
   id: string;
   name: string;
@@ -21,7 +23,7 @@ interface Template {
 const Photobooth = () => {
   const [photos, setPhotos] = useState<Photo[]>(() => {
     const saved = localStorage.getItem('photoboothPhotos');
-    return saved ? JSON.parse(saved).map((p: any) => ({ ...p, timestamp: new Date(p.timestamp) })) : [];
+    return saved ? (JSON.parse(saved) as StoredPhoto[]).map((photo) => ({ ...photo, timestamp: new Date(photo.timestamp) })) : [];
   });
   const [isCapturing, setIsCapturing] = useState(false);
   const [currentFilter, setCurrentFilter] = useState('none');

@@ -30,10 +30,20 @@ interface FlashcardSet {
   createdAt: Date;
 }
 
+type StoredFlashcardSet = Omit<FlashcardSet, 'createdAt'> & { createdAt: string };
+
+const getErrorMessage = (error: unknown): string => {
+  if (error instanceof Error) return error.message;
+  if (typeof error === 'object' && error !== null && 'message' in error && typeof error.message === 'string') {
+    return error.message;
+  }
+  return '';
+};
+
 const FlashcardGenerator = () => {
   const [sets, setSets] = useState<FlashcardSet[]>(() => {
     const saved = localStorage.getItem('flashcardSets');
-    return saved ? JSON.parse(saved).map((s: any) => ({ ...s, createdAt: new Date(s.createdAt) })) : [];
+    return saved ? (JSON.parse(saved) as StoredFlashcardSet[]).map((set) => ({ ...set, createdAt: new Date(set.createdAt) })) : [];
   });
   const [currentSet, setCurrentSet] = useState<FlashcardSet | null>(null);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -163,7 +173,7 @@ const FlashcardGenerator = () => {
           const page = await pdf.getPage(i);
           const textContent = await page.getTextContent();
           const pageText = textContent.items
-            .map((item: any) => item.str)
+            .map((item) => ('str' in item ? item.str : ''))
             .join(' ');
           fullText += pageText + '\n\n';
         } catch (pageError) {
@@ -177,14 +187,15 @@ const FlashcardGenerator = () => {
       }
 
       return fullText;
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error extracting PDF text:', error);
-      if (error.message?.includes('Invalid PDF')) {
+      const errorMessage = getErrorMessage(error);
+      if (errorMessage.includes('Invalid PDF')) {
         throw new Error('Invalid PDF file. Please check if the file is corrupted.');
-      } else if (error.message?.includes('password')) {
+      } else if (errorMessage.includes('password')) {
         throw new Error('This PDF is password protected. Please remove the password and try again.');
       } else {
-        throw new Error(`Failed to extract text: ${error.message || 'Unknown error'}. Please try a different PDF file or convert it to text format.`);
+        throw new Error(`Failed to extract text: ${errorMessage || 'Unknown error'}. Please try a different PDF file or convert it to text format.`);
       }
     }
   };
@@ -229,9 +240,9 @@ const FlashcardGenerator = () => {
         setIsGenerating(false);
         playSound('success');
       }, 1500);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error reading file:', error);
-      alert(error.message || 'Error reading file. Please try again.');
+      alert(getErrorMessage(error) || 'Error reading file. Please try again.');
       setIsGenerating(false);
     }
   };

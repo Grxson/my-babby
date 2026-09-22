@@ -8,7 +8,10 @@ class SoundGenerator {
 
   private getAudioContext(): AudioContext {
     if (!this.audioContext) {
-      this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const AudioContextConstructor = window.AudioContext || (window as typeof window & {
+              webkitAudioContext?: typeof AudioContext;
+            }).webkitAudioContext;
+            this.audioContext = new AudioContextConstructor();
     }
     return this.audioContext;
   }
