@@ -29,18 +29,18 @@ const DatePlanner = () => {
   const { playSound } = useSound();
 
   const activitySuggestions = [
-    'Romantic Dinner',
-    'Movie Night',
-    'Picnic in the Park',
-    'Stargazing',
-    'Coffee Date',
-    'Museum Visit',
-    'Beach Walk',
-    'Cooking Together',
-    'Dance Class',
-    'Art Gallery',
-    'Concert',
-    'Hiking',
+    'Cena romántica',
+    'Noche de cine',
+    'Pícnic en el parque',
+    'Observación de estrellas',
+    'Cita para tomar café',
+    'Visita al museo',
+    'Paseo por la playa',
+    'Cocinar juntos',
+    'Clase de baile',
+    'Galería de arte',
+    'Concierto',
+    'Senderismo',
   ];
 
   const savePlan = () => {
@@ -92,10 +92,10 @@ const DatePlanner = () => {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-4xl md:text-5xl font-heavy text-primary mb-4">
-            Virtual Date Planner
+            Planificador de citas virtuales
           </h1>
           <p className="text-muted-foreground font-serif-italic">
-            Plan your perfect dates together
+            Planifiquen juntos sus citas perfectas
           </p>
         </motion.div>
 
@@ -106,7 +106,7 @@ const DatePlanner = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <h2 className="text-2xl font-medium mb-4">Plan a Date</h2>
+          <h2 className="text-2xl font-medium mb-4">Planifica una cita</h2>
           
           <div className="grid md:grid-cols-2 gap-4 mb-4">
             <input
@@ -124,7 +124,7 @@ const DatePlanner = () => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">Activity Suggestions:</label>
+            <label className="block text-sm font-medium mb-2">Sugerencias de actividades:</label>
             <div className="flex flex-wrap gap-2">
               {activitySuggestions.map((activity) => (
                 <button
@@ -140,7 +140,7 @@ const DatePlanner = () => {
 
           <input
             type="text"
-            placeholder="Activity..."
+            placeholder="Actividad..."
             value={currentPlan.activity}
             onChange={(e) => setCurrentPlan({ ...currentPlan, activity: e.target.value })}
             className="w-full px-4 py-2 mb-4 rounded-lg border-2 border-primary/30 focus:border-primary focus:outline-none"
@@ -148,14 +148,14 @@ const DatePlanner = () => {
 
           <input
             type="text"
-            placeholder="Location..."
+            placeholder="Lugar..."
             value={currentPlan.location}
             onChange={(e) => setCurrentPlan({ ...currentPlan, location: e.target.value })}
             className="w-full px-4 py-2 mb-4 rounded-lg border-2 border-primary/30 focus:border-primary focus:outline-none"
           />
 
           <textarea
-            placeholder="Notes..."
+            placeholder="Notas..."
             value={currentPlan.notes}
             onChange={(e) => setCurrentPlan({ ...currentPlan, notes: e.target.value })}
             className="w-full h-24 px-4 py-2 mb-4 rounded-lg border-2 border-primary/30 focus:border-primary focus:outline-none resize-none"
@@ -163,7 +163,7 @@ const DatePlanner = () => {
 
           <div className="flex gap-2">
             <button onClick={savePlan} className="flex-1 btn-romantic py-2">
-              {isEditing ? 'Update' : 'Save'} Plan
+              {isEditing ? 'Actualizar' : 'Guardar'} plan
             </button>
             {isEditing && (
               <button
@@ -173,7 +173,7 @@ const DatePlanner = () => {
                 }}
                 className="px-4 py-2 bg-muted text-muted-foreground rounded-lg"
               >
-                Cancel
+                Cancelar
               </button>
             )}
           </div>
@@ -187,10 +187,10 @@ const DatePlanner = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h2 className="text-2xl font-medium mb-4">Upcoming Dates</h2>
+            <h2 className="text-2xl font-medium mb-4">Próximas citas</h2>
             <div className="space-y-3">
               {upcomingPlans.length === 0 ? (
-                <p className="text-muted-foreground text-center py-8">No upcoming dates</p>
+                <p className="text-muted-foreground text-center py-8">No hay próximas citas</p>
               ) : (
                 upcomingPlans.map((plan) => (
                   <motion.div
@@ -202,15 +202,15 @@ const DatePlanner = () => {
                       <div>
                         <h3 className="font-medium">{plan.activity}</h3>
                         <p className="text-sm text-muted-foreground">
-                          {new Date(plan.date).toLocaleDateString()} {plan.time && `at ${plan.time}`}
+                          {new Date(plan.date).toLocaleDateString('es-ES')} {plan.time && `a las ${plan.time}`}
                         </p>
                         {plan.location && (
                           <p className="text-sm text-muted-foreground">📍 {plan.location}</p>
                         )}
                       </div>
                       <div className="flex gap-2">
-                        <button onClick={() => editPlan(plan)} className="text-primary">Edit</button>
-                        <button onClick={() => deletePlan(plan.id)} className="text-red-500">Delete</button>
+                        <button onClick={() => editPlan(plan)} className="text-primary">Editar</button>
+                        <button onClick={() => deletePlan(plan.id)} className="text-red-500">Eliminar</button>
                       </div>
                     </div>
                     {plan.notes && <p className="text-sm text-muted-foreground">{plan.notes}</p>}
@@ -226,10 +226,10 @@ const DatePlanner = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <h2 className="text-2xl font-medium mb-4">Past Dates</h2>
+            <h2 className="text-2xl font-medium mb-4">Citas pasadas</h2>
             <div className="space-y-3">
               {pastPlans.length === 0 ? (
-                <p className="text-muted-foreground text-center py-8">No past dates</p>
+                <p className="text-muted-foreground text-center py-8">No hay citas pasadas</p>
               ) : (
                 pastPlans.map((plan) => (
                   <motion.div
@@ -238,7 +238,7 @@ const DatePlanner = () => {
                   >
                     <h3 className="font-medium">{plan.activity}</h3>
                     <p className="text-sm text-muted-foreground">
-                      {new Date(plan.date).toLocaleDateString()}
+                      {new Date(plan.date).toLocaleDateString('es-ES')}
                     </p>
                   </motion.div>
                 ))

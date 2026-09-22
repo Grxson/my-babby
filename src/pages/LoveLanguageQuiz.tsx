@@ -13,67 +13,67 @@ interface Question {
 const questions: Question[] = [
   {
     id: 1,
-    question: 'What makes you feel most loved?',
+    question: '¿Qué te hace sentir más amado/a?',
     options: [
-      { text: 'Receiving thoughtful gifts', type: 'gifts' },
-      { text: 'Hearing "I love you" and compliments', type: 'words' },
-      { text: 'Spending quality time together', type: 'time' },
-      { text: 'Physical touch and hugs', type: 'touch' },
-      { text: 'When someone helps with tasks', type: 'acts' },
+      { text: 'Recibir regalos significativos', type: 'gifts' },
+      { text: 'Escuchar "te amo" y cumplidos', type: 'words' },
+      { text: 'Pasar tiempo de calidad juntos', type: 'time' },
+      { text: 'El contacto físico y los abrazos', type: 'touch' },
+      { text: 'Que alguien ayude con las tareas', type: 'acts' },
     ],
   },
   {
     id: 2,
-    question: 'How do you prefer to show love?',
+    question: '¿Cómo prefieres demostrar amor?',
     options: [
-      { text: 'Giving meaningful presents', type: 'gifts' },
-      { text: 'Writing love notes and saying sweet things', type: 'words' },
-      { text: 'Planning special activities together', type: 'time' },
-      { text: 'Holding hands and cuddling', type: 'touch' },
-      { text: 'Doing helpful things for them', type: 'acts' },
+      { text: 'Dar regalos significativos', type: 'gifts' },
+      { text: 'Escribir notas de amor y decir cosas bonitas', type: 'words' },
+      { text: 'Planificar actividades especiales juntos', type: 'time' },
+      { text: 'Tomarse de la mano y abrazarse', type: 'touch' },
+      { text: 'Hacer cosas útiles por la otra persona', type: 'acts' },
     ],
   },
   {
     id: 3,
-    question: 'What hurts you the most in a relationship?',
+    question: '¿Qué te duele más en una relación?',
     options: [
-      { text: 'Forgetting special occasions', type: 'gifts' },
-      { text: 'Harsh words or criticism', type: 'words' },
-      { text: 'Being too busy to spend time together', type: 'time' },
-      { text: 'Lack of physical affection', type: 'touch' },
-      { text: 'Not helping when needed', type: 'acts' },
+      { text: 'Olvidar ocasiones especiales', type: 'gifts' },
+      { text: 'Palabras hirientes o críticas', type: 'words' },
+      { text: 'Estar demasiado ocupado/a para pasar tiempo juntos', type: 'time' },
+      { text: 'La falta de afecto físico', type: 'touch' },
+      { text: 'No ayudar cuando se necesita', type: 'acts' },
     ],
   },
   {
     id: 4,
-    question: 'What makes you feel appreciated?',
+    question: '¿Qué te hace sentir valorado/a?',
     options: [
-      { text: 'Surprise gifts or flowers', type: 'gifts' },
-      { text: 'Verbal appreciation and praise', type: 'words' },
-      { text: 'Undivided attention', type: 'time' },
-      { text: 'A warm embrace', type: 'touch' },
-      { text: 'Someone doing chores for you', type: 'acts' },
+      { text: 'Regalos sorpresa o flores', type: 'gifts' },
+      { text: 'Agradecimiento y elogios verbales', type: 'words' },
+      { text: 'Atención plena', type: 'time' },
+      { text: 'Un abrazo cálido', type: 'touch' },
+      { text: 'Que alguien haga tareas por ti', type: 'acts' },
     ],
   },
   {
     id: 5,
-    question: 'How do you celebrate achievements?',
+    question: '¿Cómo celebras los logros?',
     options: [
-      { text: 'Buying something special', type: 'gifts' },
-      { text: 'Sharing words of encouragement', type: 'words' },
-      { text: 'Going out together', type: 'time' },
-      { text: 'A celebratory hug', type: 'touch' },
-      { text: 'Helping with something', type: 'acts' },
+      { text: 'Comprar algo especial', type: 'gifts' },
+      { text: 'Compartir palabras de ánimo', type: 'words' },
+      { text: 'Salir juntos', type: 'time' },
+      { text: 'Un abrazo de celebración', type: 'touch' },
+      { text: 'Ayudar con algo', type: 'acts' },
     ],
   },
 ];
 
 const loveLanguages = {
-  gifts: { name: 'Receiving Gifts', description: 'You feel loved when given thoughtful presents', suggestions: ['Surprise them with small gifts', 'Remember special occasions', 'Give meaningful items'] },
-  words: { name: 'Words of Affirmation', description: 'You value verbal expressions of love', suggestions: ['Write love letters', 'Give daily compliments', 'Express appreciation often'] },
-  time: { name: 'Quality Time', description: 'You cherish undivided attention', suggestions: ['Plan regular date nights', 'Put away distractions', 'Create shared experiences'] },
-  touch: { name: 'Physical Touch', description: 'You feel loved through physical connection', suggestions: ['Hold hands often', 'Give hugs and kisses', 'Be physically present'] },
-  acts: { name: 'Acts of Service', description: 'You appreciate helpful actions', suggestions: ['Help with daily tasks', 'Do things without being asked', 'Show care through actions'] },
+  gifts: { name: 'Recibir regalos', description: 'Te sientes amado/a al recibir regalos significativos', suggestions: ['Sorprende con pequeños regalos', 'Recuerda las ocasiones especiales', 'Regala objetos significativos'] },
+  words: { name: 'Palabras de afirmación', description: 'Valoras las expresiones verbales de amor', suggestions: ['Escribe cartas de amor', 'Da cumplidos a diario', 'Expresa tu aprecio a menudo'] },
+  time: { name: 'Tiempo de calidad', description: 'Aprecias la atención plena', suggestions: ['Planifica citas con regularidad', 'Deja a un lado las distracciones', 'Crea experiencias compartidas'] },
+  touch: { name: 'Contacto físico', description: 'Te sientes amado/a mediante la conexión física', suggestions: ['Tómense de la mano a menudo', 'Da abrazos y besos', 'Mantente presente físicamente'] },
+  acts: { name: 'Actos de servicio', description: 'Aprecias las acciones útiles', suggestions: ['Ayuda con las tareas diarias', 'Haz cosas sin que te las pidan', 'Demuestra tu cariño con acciones'] },
 };
 
 const LoveLanguageQuiz = () => {
@@ -131,10 +131,10 @@ const LoveLanguageQuiz = () => {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-4xl md:text-5xl font-heavy text-primary mb-4">
-            Love Language Quiz
+            Cuestionario de lenguajes del amor
           </h1>
           <p className="text-muted-foreground font-serif-italic">
-            Discover how you give and receive love
+            Descubre cómo das y recibes amor
           </p>
         </motion.div>
 
@@ -150,7 +150,7 @@ const LoveLanguageQuiz = () => {
               <div className="mb-6">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-sm text-muted-foreground">
-                    Question {currentQuestion + 1} of {questions.length}
+                    Pregunta {currentQuestion + 1} de {questions.length}
                   </span>
                   <div className="w-32 h-2 bg-muted rounded-full overflow-hidden">
                     <motion.div
@@ -188,7 +188,7 @@ const LoveLanguageQuiz = () => {
               animate={{ opacity: 1, scale: 1 }}
               className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-elevated"
             >
-              <h2 className="text-3xl font-medium mb-6 text-center">Your Love Language</h2>
+              <h2 className="text-3xl font-medium mb-6 text-center">Tu lenguaje del amor</h2>
               
               {Object.entries(results)
                 .sort((a, b) => b[1] - a[1])
@@ -236,7 +236,7 @@ const LoveLanguageQuiz = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
               >
-                <h3 className="font-medium mb-3">Suggestions for {loveLanguages[getTopLanguage() as keyof typeof loveLanguages].name}:</h3>
+                <h3 className="font-medium mb-3">Sugerencias para {loveLanguages[getTopLanguage() as keyof typeof loveLanguages].name}:</h3>
                 <ul className="space-y-2">
                   {loveLanguages[getTopLanguage() as keyof typeof loveLanguages].suggestions.map((suggestion, idx) => (
                     <li key={idx} className="text-sm text-muted-foreground flex items-start">
@@ -251,7 +251,7 @@ const LoveLanguageQuiz = () => {
                 onClick={resetQuiz}
                 className="w-full mt-6 btn-romantic py-3"
               >
-                Take Quiz Again
+                Repetir el cuestionario
               </button>
             </motion.div>
           )}

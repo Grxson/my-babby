@@ -33,29 +33,29 @@ const LoveLetterBuilder = () => {
 
   const fonts = [
     { name: 'Serif', value: 'serif', class: 'font-serif-italic' },
-    { name: 'Sans', value: 'sans', class: 'font-sans' },
-    { name: 'Monospace', value: 'mono', class: 'font-mono' },
+    { name: 'Sans serif', value: 'sans', class: 'font-sans' },
+    { name: 'Monoespaciada', value: 'mono', class: 'font-mono' },
   ];
 
   const colors = [
-    { name: 'Dark', value: 'hsl(150, 20%, 15%)' },
-    { name: 'Primary', value: 'hsl(145, 35%, 55%)' },
-    { name: 'Accent', value: 'hsl(155, 40%, 40%)' },
-    { name: 'Romantic', value: 'hsl(350, 60%, 50%)' },
+    { name: 'Oscuro', value: 'hsl(150, 20%, 15%)' },
+    { name: 'Principal', value: 'hsl(145, 35%, 55%)' },
+    { name: 'Acento', value: 'hsl(155, 40%, 40%)' },
+    { name: 'Romántico', value: 'hsl(350, 60%, 50%)' },
   ];
 
   const templates = [
     {
-      title: 'Sweet & Simple',
-      content: 'My dearest,\n\nI wanted to tell you how much you mean to me...\n\nWith all my love,',
+      title: 'Dulce y sencilla',
+      content: 'Mi amor,\n\nQuería decirte cuánto significas para mí...\n\nCon todo mi amor,'
     },
     {
-      title: 'Romantic',
-      content: 'To my beloved,\n\nEvery day with you feels like a dream come true. Your smile lights up my world...\n\nForever yours,',
+      title: 'Romántica',
+      content: 'Para mi amor,\n\nCada día contigo se siente como un sueño hecho realidad. Tu sonrisa ilumina mi mundo...\n\nSiempre tuyo/a,'
     },
     {
-      title: 'Poetic',
-      content: 'My love,\n\nLike flowers bloom in spring,\nYour presence brings me joy...\n\nAlways,',
+      title: 'Poética',
+      content: 'Mi amor,\n\nComo las flores florecen en primavera,\ntu presencia me llena de alegría...\n\nSiempre,'
     },
   ];
 
@@ -111,10 +111,10 @@ const LoveLetterBuilder = () => {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-4xl md:text-5xl font-heavy text-primary mb-4">
-            Love Letter Builder
+            Creador de cartas de amor
           </h1>
           <p className="text-muted-foreground font-serif-italic">
-            Write your heart out with beautiful letters
+            Expresa lo que sientes con hermosas cartas
           </p>
         </motion.div>
 
@@ -126,11 +126,11 @@ const LoveLetterBuilder = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <h2 className="text-2xl font-medium mb-4">Write Your Letter</h2>
+            <h2 className="text-2xl font-medium mb-4">Escribe tu carta</h2>
             
             {/* Templates */}
             <div className="mb-4">
-              <p className="text-sm text-muted-foreground mb-2">Templates:</p>
+              <p className="text-sm text-muted-foreground mb-2">Plantillas:</p>
               <div className="flex flex-wrap gap-2">
                 {templates.map((template) => (
                   <button
@@ -146,14 +146,14 @@ const LoveLetterBuilder = () => {
 
             <input
               type="text"
-              placeholder="Letter title..."
+              placeholder="Título de la carta..."
               value={currentLetter.title}
               onChange={(e) => setCurrentLetter({ ...currentLetter, title: e.target.value })}
               className="w-full px-4 py-2 mb-4 rounded-lg border-2 border-primary/30 focus:border-primary focus:outline-none"
             />
 
             <textarea
-              placeholder="Write your letter here..."
+              placeholder="Escribe tu carta aquí..."
               value={currentLetter.content}
               onChange={(e) => setCurrentLetter({ ...currentLetter, content: e.target.value })}
               className="w-full h-64 px-4 py-2 mb-4 rounded-lg border-2 border-primary/30 focus:border-primary focus:outline-none resize-none"
@@ -190,7 +190,7 @@ const LoveLetterBuilder = () => {
                 onClick={saveLetter}
                 className="flex-1 btn-romantic py-2"
               >
-                {isEditing ? 'Update' : 'Save'} Letter
+                {isEditing ? 'Actualizar' : 'Guardar'} carta
               </button>
               {isEditing && (
                 <button
@@ -200,7 +200,7 @@ const LoveLetterBuilder = () => {
                   }}
                   className="px-4 py-2 bg-muted text-muted-foreground rounded-lg hover:bg-muted/80"
                 >
-                  Cancel
+                  Cancelar
                 </button>
               )}
             </div>
@@ -213,10 +213,10 @@ const LoveLetterBuilder = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h2 className="text-2xl font-medium mb-4">Saved Letters</h2>
+            <h2 className="text-2xl font-medium mb-4">Cartas guardadas</h2>
             <div className="space-y-3 max-h-[600px] overflow-y-auto">
               {letters.length === 0 ? (
-                <p className="text-muted-foreground text-center py-8">No letters yet</p>
+                <p className="text-muted-foreground text-center py-8">Aún no hay cartas</p>
               ) : (
                 letters.map((letter) => (
                   <motion.div
@@ -231,19 +231,19 @@ const LoveLetterBuilder = () => {
                           onClick={() => editLetter(letter)}
                           className="text-primary hover:text-accent"
                         >
-                          Edit
+                          Editar
                         </button>
                         <button
                           onClick={() => deleteLetter(letter.id)}
                           className="text-red-500 hover:text-red-600"
                         >
-                          Delete
+                          Eliminar
                         </button>
                       </div>
                     </div>
                     <p className="text-sm text-muted-foreground line-clamp-2">{letter.content}</p>
                     <p className="text-xs text-muted-foreground/60 mt-2">
-                      {new Date(letter.createdAt).toLocaleDateString()}
+                      {new Date(letter.createdAt).toLocaleDateString('es-ES')}
                     </p>
                   </motion.div>
                 ))
@@ -260,12 +260,12 @@ const LoveLetterBuilder = () => {
             animate={{ opacity: 1, y: 0 }}
           >
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-medium">Preview</h2>
+              <h2 className="text-2xl font-medium">Vista previa</h2>
               <button
                 onClick={() => setShowPreview(!showPreview)}
                 className="px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20"
               >
-                {showPreview ? 'Hide' : 'Show'} Preview
+                {showPreview ? 'Ocultar' : 'Mostrar'} vista previa
               </button>
             </div>
             {showPreview && (

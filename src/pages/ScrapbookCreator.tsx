@@ -36,7 +36,7 @@ const ScrapbookCreator = () => {
       y: Math.random() * 300 + 50,
       width: type === 'text' ? 200 : type === 'sticker' ? 50 : 150,
       height: type === 'text' ? 100 : type === 'sticker' ? 50 : 150,
-      content: content || (type === 'text' ? 'Your text here' : ''),
+      content: content || (type === 'text' ? 'Tu texto aquí' : ''),
     };
 
     const updated = [...pages];
@@ -80,7 +80,7 @@ const ScrapbookCreator = () => {
 
   const exportPDF = () => {
     // Simple export - in production, use a library like jsPDF
-    alert('PDF export feature - implement with jsPDF library');
+    alert('Función de exportación a PDF: impleméntala con la biblioteca jsPDF');
     playSound('success');
   };
 
@@ -95,10 +95,10 @@ const ScrapbookCreator = () => {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-4xl md:text-5xl font-heavy text-primary mb-4">
-            Digital Scrapbook Creator
+            Creador de álbumes de recortes digitales
           </h1>
           <p className="text-muted-foreground font-serif-italic">
-            Create beautiful memories together
+            Creen juntos hermosos recuerdos
           </p>
         </motion.div>
 
@@ -113,13 +113,13 @@ const ScrapbookCreator = () => {
             onClick={() => addElement('text')}
             className="px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20"
           >
-            Add Text
+            Agregar texto
           </button>
           <button
             onClick={() => fileInputRef.current?.click()}
             className="px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20"
           >
-            Add Image
+            Agregar imagen
           </button>
           <input
             ref={fileInputRef}
@@ -141,10 +141,10 @@ const ScrapbookCreator = () => {
           </div>
           <div className="ml-auto flex gap-2">
             <button onClick={addPage} className="px-4 py-2 bg-primary/10 text-primary rounded-lg">
-              Add Page
+              Agregar página
             </button>
             <button onClick={exportPDF} className="px-4 py-2 btn-romantic">
-              Export PDF
+              Exportar PDF
             </button>
           </div>
         </motion.div>
@@ -162,7 +162,7 @@ const ScrapbookCreator = () => {
                     : 'bg-white/50 text-muted-foreground'
                 }`}
               >
-                Page {idx + 1}
+                Página {idx + 1}
               </button>
             ))}
           </div>
@@ -204,7 +204,7 @@ const ScrapbookCreator = () => {
               )}
               {element.type === 'image' && (
                 <>
-                  <img src={element.content} alt="Scrapbook" className="w-full h-full object-cover rounded" />
+                  <img src={element.content} alt="Álbum de recortes" className="w-full h-full object-cover rounded" />
                   <button
                     onClick={(e) => {
                       e.stopPropagation();

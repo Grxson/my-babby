@@ -22,9 +22,9 @@ const MusicPlaylist = () => {
   const { playSound } = useSound();
 
   const presetSongs: Song[] = [
-    { id: '1', title: 'Perfect', artist: 'Ed Sheeran', lyrics: 'I found a love for me...' },
-    { id: '2', title: 'All of Me', artist: 'John Legend', lyrics: 'What would I do without your smart mouth...' },
-    { id: '3', title: 'At Last', artist: 'Etta James', lyrics: 'At last, my love has come along...' },
+    { id: '1', title: 'Perfect', artist: 'Ed Sheeran', lyrics: 'Encontré un amor para mí...' },
+    { id: '2', title: 'All of Me', artist: 'John Legend', lyrics: '¿Qué haría sin tu boca tan ingeniosa...?' },
+    { id: '3', title: 'At Last', artist: 'Etta James', lyrics: 'Por fin, mi amor ha llegado...' },
   ];
 
   const addSong = () => {
@@ -79,10 +79,10 @@ const MusicPlaylist = () => {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-4xl md:text-5xl font-heavy text-primary mb-4">
-            Shared Music Playlist
+            Lista de reproducción compartida
           </h1>
           <p className="text-muted-foreground font-serif-italic">
-            Create your romantic playlist together
+            Creen juntos su lista de reproducción romántica
           </p>
         </motion.div>
 
@@ -93,18 +93,18 @@ const MusicPlaylist = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <h2 className="text-2xl font-medium mb-4">Add Song</h2>
+          <h2 className="text-2xl font-medium mb-4">Agregar canción</h2>
           <div className="grid md:grid-cols-2 gap-4 mb-4">
             <input
               type="text"
-              placeholder="Song title..."
+              placeholder="Título de la canción..."
               value={newSong.title}
               onChange={(e) => setNewSong({ ...newSong, title: e.target.value })}
               className="px-4 py-2 rounded-lg border-2 border-primary/30 focus:border-primary focus:outline-none"
             />
             <input
               type="text"
-              placeholder="Artist..."
+              placeholder="Artista..."
               value={newSong.artist}
               onChange={(e) => setNewSong({ ...newSong, artist: e.target.value })}
               className="px-4 py-2 rounded-lg border-2 border-primary/30 focus:border-primary focus:outline-none"
@@ -112,19 +112,19 @@ const MusicPlaylist = () => {
           </div>
           <input
             type="url"
-            placeholder="Song URL (optional)..."
+            placeholder="URL de la canción (opcional)..."
             value={newSong.url}
             onChange={(e) => setNewSong({ ...newSong, url: e.target.value })}
             className="w-full px-4 py-2 mb-4 rounded-lg border-2 border-primary/30 focus:border-primary focus:outline-none"
           />
           <textarea
-            placeholder="Lyrics (optional)..."
+            placeholder="Letra (opcional)..."
             value={newSong.lyrics}
             onChange={(e) => setNewSong({ ...newSong, lyrics: e.target.value })}
             className="w-full h-24 px-4 py-2 mb-4 rounded-lg border-2 border-primary/30 focus:border-primary focus:outline-none resize-none"
           />
           <button onClick={addSong} className="w-full btn-romantic py-3">
-            Add to Playlist
+            Agregar a la lista
           </button>
         </motion.div>
 
@@ -135,7 +135,7 @@ const MusicPlaylist = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <h3 className="text-lg font-medium mb-3">Quick Add:</h3>
+          <h3 className="text-lg font-medium mb-3">Agregar rápidamente:</h3>
           <div className="flex flex-wrap gap-2">
             {presetSongs.map((song) => (
               <button
@@ -156,10 +156,10 @@ const MusicPlaylist = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <h2 className="text-2xl font-medium mb-4">Your Playlist</h2>
+          <h2 className="text-2xl font-medium mb-4">Tu lista de reproducción</h2>
           {playlist.length === 0 ? (
             <p className="text-center text-muted-foreground py-12">
-              Your playlist is empty. Add some songs to get started!
+              Tu lista de reproducción está vacía. ¡Agrega canciones para comenzar!
             </p>
           ) : (
             playlist.map((song, index) => (
@@ -195,13 +195,13 @@ const MusicPlaylist = () => {
                       onClick={() => playSong(song)}
                       className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90"
                     >
-                      {currentSong?.id === song.id && isPlaying ? 'Playing' : 'Play'}
+                      {currentSong?.id === song.id && isPlaying ? 'Reproduciendo' : 'Reproducir'}
                     </button>
                     <button
                       onClick={() => deleteSong(song.id)}
                       className="px-4 py-2 bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20"
                     >
-                      Delete
+                      Eliminar
                     </button>
                   </div>
                 </div>
@@ -216,7 +216,7 @@ const MusicPlaylist = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          💡 Note: For full music integration, connect with Spotify or Apple Music API
+          💡 Nota: Para una integración musical completa, conéctate a la API de Spotify o Apple Music
         </motion.p>
       </div>
     </div>
