@@ -15,57 +15,57 @@
   }
 }
 
-/* Valentine Design System - Pastel Green & White Romantic Theme */
+/* Valentine Design System - Warm Gold and Cream Romantic Theme */
 
 @layer base {
   :root {
-    /* Core palette - Pastel green romance */
-    --background: 140 30% 97%;
-    --foreground: 150 20% 15%;
+    /* Core palette - Warm gold romance */
+    --background: 45 65% 97%;
+    --foreground: 32 38% 16%;
     
-    --card: 140 25% 95%;
-    --card-foreground: 150 20% 15%;
+    --card: 45 55% 95%;
+    --card-foreground: 32 38% 16%;
     
-    --popover: 140 30% 98%;
-    --popover-foreground: 150 20% 15%;
+    --popover: 48 70% 98%;
+    --popover-foreground: 32 38% 16%;
     
-    /* Primary - Sage green */
-    --primary: 145 35% 55%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary - Honey gold */
+    --primary: 42 76% 48%;
+    --primary-foreground: 38 45% 14%;
     
-    /* Secondary - Soft mint */
-    --secondary: 150 30% 90%;
-    --secondary-foreground: 150 25% 25%;
+    /* Secondary - Soft butter */
+    --secondary: 45 65% 89%;
+    --secondary-foreground: 34 38% 24%;
     
-    --muted: 145 20% 92%;
-    --muted-foreground: 150 15% 45%;
+    --muted: 43 40% 91%;
+    --muted-foreground: 35 20% 42%;
     
-    /* Accent - Deeper forest green */
-    --accent: 155 40% 40%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent - Deep amber */
+    --accent: 34 68% 38%;
+    --accent-foreground: 48 90% 96%;
     
-    /* Romantic blush accent */
-    --romantic: 350 60% 88%;
-    --romantic-foreground: 350 40% 30%;
+    /* Romantic accent - Champagne */
+    --romantic: 48 82% 88%;
+    --romantic-foreground: 35 48% 26%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     
-    --border: 145 25% 85%;
-    --input: 145 25% 88%;
-    --ring: 145 35% 55%;
+    --border: 42 38% 82%;
+    --input: 44 48% 90%;
+    --ring: 42 76% 48%;
     
     --radius: 0.75rem;
     
     /* Custom gradients */
-    --gradient-romantic: linear-gradient(135deg, hsl(140 30% 97%) 0%, hsl(150 35% 92%) 50%, hsl(145 30% 95%) 100%);
-    --gradient-deep: linear-gradient(180deg, hsl(200 25% 15%) 0%, hsl(340 30% 25%) 100%);
-    --gradient-paper: linear-gradient(180deg, hsl(40 30% 96%) 0%, hsl(35 25% 92%) 100%);
+    --gradient-romantic: linear-gradient(135deg, hsl(45 65% 97%) 0%, hsl(48 75% 91%) 50%, hsl(40 62% 94%) 100%);
+    --gradient-deep: linear-gradient(180deg, hsl(35 42% 16%) 0%, hsl(28 48% 24%) 100%);
+    --gradient-paper: linear-gradient(180deg, hsl(48 55% 97%) 0%, hsl(42 45% 91%) 100%);
     
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(145 30% 50% / 0.15);
-    --shadow-elevated: 0 10px 40px -10px hsl(145 30% 40% / 0.25);
-    --shadow-romantic: 0 8px 30px -8px hsl(350 40% 60% / 0.2);
+    --shadow-soft: 0 4px 20px -4px hsl(42 70% 42% / 0.18);
+    --shadow-elevated: 0 10px 40px -10px hsl(34 65% 32% / 0.25);
+    --shadow-romantic: 0 8px 30px -8px hsl(45 75% 52% / 0.24);
     
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -78,36 +78,36 @@
   }
 
   .dark {
-    --background: 200 25% 8%;
-    --foreground: 140 20% 95%;
+    --background: 32 40% 10%;
+    --foreground: 48 75% 94%;
     
-    --card: 200 20% 12%;
-    --card-foreground: 140 20% 95%;
+    --card: 32 35% 14%;
+    --card-foreground: 48 75% 94%;
     
-    --popover: 200 20% 10%;
-    --popover-foreground: 140 20% 95%;
+    --popover: 32 35% 12%;
+    --popover-foreground: 48 75% 94%;
     
-    --primary: 145 40% 60%;
-    --primary-foreground: 200 25% 8%;
+    --primary: 43 82% 60%;
+    --primary-foreground: 32 40% 10%;
     
-    --secondary: 200 15% 18%;
-    --secondary-foreground: 140 20% 90%;
+    --secondary: 32 26% 20%;
+    --secondary-foreground: 46 58% 90%;
     
-    --muted: 200 15% 15%;
-    --muted-foreground: 140 15% 60%;
+    --muted: 32 24% 17%;
+    --muted-foreground: 42 28% 64%;
     
-    --accent: 155 35% 50%;
+    --accent: 35 72% 52%;
     --accent-foreground: 0 0% 100%;
     
-    --romantic: 350 40% 25%;
-    --romantic-foreground: 350 30% 85%;
+    --romantic: 40 48% 27%;
+    --romantic-foreground: 48 72% 88%;
     
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     
-    --border: 200 15% 20%;
-    --input: 200 15% 18%;
-    --ring: 145 40% 60%;
+    --border: 32 25% 24%;
+    --input: 32 26% 20%;
+    --ring: 43 82% 60%;
     
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -158,12 +158,12 @@
   
   .envelope-btn {
     @apply cursor-pointer transition-all duration-500 ease-out;
-    filter: drop-shadow(0 8px 24px hsl(145 30% 40% / 0.2));
+    filter: drop-shadow(0 8px 24px hsl(34 65% 32% / 0.2));
   }
   
   .envelope-btn:hover {
     transform: translateY(-4px) scale(1.02);
-    filter: drop-shadow(0 12px 32px hsl(145 30% 40% / 0.3));
+    filter: drop-shadow(0 12px 32px hsl(34 65% 32% / 0.3));
   }
   
   .floating-element {

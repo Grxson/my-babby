@@ -22,13 +22,13 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
         {/* Soft gradient circles */}
         <motion.div
           className="absolute top-[10%] left-[10%] w-64 h-64 rounded-full"
-          style={{ background: 'radial-gradient(circle, hsl(145, 30%, 90%) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(circle, hsl(42, 30%, 90%) 0%, transparent 70%)' }}
           animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.7, 0.5] }}
           transition={{ duration: 6, repeat: Infinity }}
         />
         <motion.div
           className="absolute bottom-[20%] right-[5%] w-48 h-48 rounded-full"
-          style={{ background: 'radial-gradient(circle, hsl(350, 40%, 90%) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(circle, hsl(38, 40%, 90%) 0%, transparent 70%)' }}
           animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.6, 0.4] }}
           transition={{ duration: 5, repeat: Infinity, delay: 1 }}
         />
@@ -73,7 +73,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
         >
           <TulipIcon 
             size={120} 
-            color="hsl(350, 60%, 65%)" 
+            color="hsl(38, 60%, 65%)" 
             delay={1}
           />
           <motion.p
@@ -128,7 +128,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
         >
           <LilyIcon 
             size={120} 
-            color="hsl(320, 70%, 75%)" 
+            color="hsl(45, 70%, 75%)" 
             delay={2}
           />
           <motion.p
@@ -156,7 +156,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
         >
           <FourLeafCloverIcon 
             size={110} 
-            color="hsl(145, 50%, 50%)" 
+            color="hsl(42, 50%, 50%)" 
             delay={2.5}
           />
           <motion.p
@@ -231,7 +231,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
             ease: "linear",
           }}
         >
-          <svg width="16" height="16" viewBox="0 0 20 20" fill="hsl(350, 50%, 75%)" opacity={0.6}>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="hsl(38, 50%, 75%)" opacity={0.6}>
             <ellipse cx="10" cy="10" rx="5" ry="8" />
           </svg>
         </motion.div>

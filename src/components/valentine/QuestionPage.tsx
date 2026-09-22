@@ -35,7 +35,7 @@ const QuestionPage = ({ onComplete }: QuestionPageProps) => {
   const panicLevel = Math.min(noClickCount, 10);
   const backgroundColor = isPanicking
     ? `hsl(${340 - panicLevel * 10}, ${30 + panicLevel * 5}%, ${25 - panicLevel * 1.5}%)`
-    : 'hsl(200, 25%, 15%)';
+    : 'hsl(32, 25%, 15%)';
 
   useEffect(() => {
     if (noClickCount >= 3) {
@@ -90,7 +90,7 @@ const QuestionPage = ({ onComplete }: QuestionPageProps) => {
       style={{
         background: isPanicking
           ? `linear-gradient(180deg, ${backgroundColor} 0%, hsl(${350 - panicLevel * 5}, ${40 + panicLevel * 3}%, ${20 - panicLevel}%) 100%)`
-          : 'linear-gradient(180deg, hsl(200, 25%, 15%) 0%, hsl(340, 30%, 25%) 100%)',
+          : 'linear-gradient(180deg, hsl(32, 25%, 15%) 0%, hsl(32, 30%, 25%) 100%)',
       }}
     >
       <Confetti isActive={showConfetti} />
@@ -270,7 +270,7 @@ const QuestionPage = ({ onComplete }: QuestionPageProps) => {
               }}
               transition={{ duration: 1, repeat: 2 }}
             >
-              <HeartIcon size={80} color="hsl(145, 45%, 55%)" animate />
+              <HeartIcon size={80} color="hsl(42, 45%, 55%)" animate />
             </motion.div>
 
             <h2 className="text-3xl md:text-4xl font-serif-italic text-white mb-6">

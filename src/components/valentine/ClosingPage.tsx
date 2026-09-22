@@ -45,7 +45,7 @@ const ClosingPage = ({ onReplay }: ClosingPageProps) => {
             >
               <HeartIcon
                 size={40}
-                color="hsl(145, 40%, 55%)"
+                color="hsl(42, 40%, 55%)"
               />
             </motion.div>
           ))}
@@ -99,13 +99,13 @@ const ClosingPage = ({ onReplay }: ClosingPageProps) => {
             animate={{ rotate: [0, 180, 360], scale: [1, 1.2, 1] }}
             transition={{ duration: 4, repeat: Infinity }}
           >
-            <SparkleIcon size={24} color="hsl(145, 35%, 60%)" />
+            <SparkleIcon size={24} color="hsl(42, 35%, 60%)" />
           </motion.div>
           <motion.div
             animate={{ rotate: [360, 180, 0], scale: [1.2, 1, 1.2] }}
             transition={{ duration: 3, repeat: Infinity }}
           >
-            <SparkleIcon size={32} color="hsl(350, 50%, 70%)" />
+            <SparkleIcon size={32} color="hsl(38, 50%, 70%)" />
           </motion.div>
           <motion.div
             animate={{ rotate: [0, 180, 360], scale: [1, 1.3, 1] }}
@@ -145,21 +145,21 @@ const ClosingPage = ({ onReplay }: ClosingPageProps) => {
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 3, repeat: Infinity }}
         >
-          <HeartIcon size={24} color="hsl(145, 35%, 55%)" className="opacity-40" />
+          <HeartIcon size={24} color="hsl(42, 35%, 55%)" className="opacity-40" />
         </motion.div>
         <motion.div
           className="absolute bottom-20 left-1/2"
           animate={{ y: [0, -30, 0] }}
           transition={{ duration: 4, repeat: Infinity, delay: 1 }}
         >
-          <HeartIcon size={20} color="hsl(145, 35%, 55%)" className="opacity-30" />
+          <HeartIcon size={20} color="hsl(42, 35%, 55%)" className="opacity-30" />
         </motion.div>
         <motion.div
           className="absolute bottom-5 right-1/4"
           animate={{ y: [0, -25, 0] }}
           transition={{ duration: 3.5, repeat: Infinity, delay: 2 }}
         >
-          <HeartIcon size={28} color="hsl(145, 35%, 55%)" className="opacity-35" />
+          <HeartIcon size={28} color="hsl(42, 35%, 55%)" className="opacity-35" />
         </motion.div>
       </motion.div>
     </div>

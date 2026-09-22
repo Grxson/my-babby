@@ -131,7 +131,7 @@ const ErrorPage = ({ onComplete }: ErrorPageProps) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 2.5 }}
         >
-          Pero espera... <span className="text-[hsl(145,50%,60%)]">hay algo para ti</span>.
+          Pero espera... <span className="text-[hsl(42,50%,60%)]">hay algo para ti</span>.
         </motion.p>
         
         <motion.p
@@ -158,7 +158,7 @@ const ErrorPage = ({ onComplete }: ErrorPageProps) => {
         >
           <span className="relative z-10">ABRE TU SORPRESA</span>
           <motion.div
-            className="absolute inset-0 bg-[hsl(145,50%,60%)]"
+            className="absolute inset-0 bg-[hsl(42,50%,60%)]"
             initial={{ x: '-100%' }}
             whileHover={{ x: 0 }}
             transition={{ duration: 0.3 }}

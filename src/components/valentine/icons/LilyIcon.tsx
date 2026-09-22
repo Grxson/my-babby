@@ -7,7 +7,7 @@ interface LilyIconProps {
   delay?: number;
 }
 
-const LilyIcon = ({ size = 120, color = 'hsl(320, 70%, 75%)', className = '', delay = 0 }: LilyIconProps) => {
+const LilyIcon = ({ size = 120, color = 'hsl(45, 70%, 75%)', className = '', delay = 0 }: LilyIconProps) => {
   return (
     <motion.svg
       width={size}
@@ -21,7 +21,7 @@ const LilyIcon = ({ size = 120, color = 'hsl(320, 70%, 75%)', className = '', de
       {/* Stem */}
       <motion.path
         d="M40 128 Q38 100 40 70"
-        stroke="hsl(145, 40%, 45%)"
+        stroke="hsl(42, 40%, 45%)"
         strokeWidth="4"
         fill="none"
         strokeLinecap="round"
@@ -33,7 +33,7 @@ const LilyIcon = ({ size = 120, color = 'hsl(320, 70%, 75%)', className = '', de
       {/* Leaves */}
       <motion.path
         d="M40 100 Q20 90 15 70 Q30 80 40 85"
-        fill="hsl(145, 45%, 50%)"
+        fill="hsl(42, 45%, 50%)"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8, delay: delay + 0.8 }}
@@ -42,7 +42,7 @@ const LilyIcon = ({ size = 120, color = 'hsl(320, 70%, 75%)', className = '', de
       
       <motion.path
         d="M40 85 Q60 75 65 55 Q50 65 40 75"
-        fill="hsl(145, 45%, 50%)"
+        fill="hsl(42, 45%, 50%)"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8, delay: delay + 1 }}
@@ -131,7 +131,7 @@ const LilyIcon = ({ size = 120, color = 'hsl(320, 70%, 75%)', className = '', de
             cx="40"
             cy="30"
             r="3"
-            fill="hsl(320, 60%, 65%)"
+            fill="hsl(45, 60%, 65%)"
             animate={{ 
               scale: [1, 1.1, 1],
             }}
@@ -149,7 +149,7 @@ const LilyIcon = ({ size = 120, color = 'hsl(320, 70%, 75%)', className = '', de
               y1="30"
               x2={40 + Math.cos(angle) * 20}
               y2={30 + Math.sin(angle) * 20}
-              stroke="hsl(320, 50%, 70%)"
+              stroke="hsl(45, 50%, 70%)"
               strokeWidth="0.5"
               opacity="0.4"
               initial={{ pathLength: 0 }}

@@ -23,13 +23,13 @@ const LetterPage = ({ onComplete }: LetterPageProps) => {
     }
   };
 
-  // Calculate background color based on progress (darkening green reveal)
+  // El fondo pasa de crema a ámbar conforme avanza el revelado.
   const getDynamicBg = (progress: number) => {
-    // Light green: hsl(145, 45%, 96%)
-    // Dark green: hsl(145, 60%, 15%)
+    // Crema clara: hsl(42, 45%, 96%)
+    // Ámbar oscuro: hsl(42, 60%, 15%)
     const saturation = 45 + (progress / 100) * 15;
     const lightness = 96 - (progress / 100) * 81;
-    return `hsl(145, ${saturation}%, ${lightness}%)`;
+    return `hsl(42, ${saturation}%, ${lightness}%)`;
   };
 
 
@@ -38,7 +38,7 @@ const LetterPage = ({ onComplete }: LetterPageProps) => {
       className={`page-container flex flex-col items-center justify-center px-4 py-8 relative transition-all duration-700 ${revealProgress > 50 ? 'text-white' : 'text-foreground'
         }`}
       style={{
-        background: revealProgress > 0 ? getDynamicBg(revealProgress) : 'hsl(145, 45%, 96%)'
+        background: revealProgress > 0 ? getDynamicBg(revealProgress) : 'hsl(42, 45%, 96%)'
       }}
     >
 
@@ -85,7 +85,7 @@ const LetterPage = ({ onComplete }: LetterPageProps) => {
               animate={{ scale: [1, 1.1, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <HeartIcon size={32} color="hsl(145, 40%, 55%)" animate />
+              <HeartIcon size={32} color="hsl(42, 40%, 55%)" animate />
             </motion.div>
           </div>
         </ScratchCanvas>
@@ -105,11 +105,11 @@ const LetterPage = ({ onComplete }: LetterPageProps) => {
           </div>
         ) : (
           <div className="flex items-center gap-2 text-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="hsl(145, 40%, 55%)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="hsl(42, 40%, 55%)">
               <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z" />
             </svg>
             <span>¡Mensaje revelado!</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="hsl(145, 40%, 55%)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="hsl(42, 40%, 55%)">
               <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z" />
             </svg>
           </div>
