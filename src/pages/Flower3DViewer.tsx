@@ -22,9 +22,9 @@ const Flower3DViewer = () => {
   const { playSound } = useSound();
 
   const flowers = [
-    { id: 'tulip', name: 'Tulipán', color: 0xff6b9d },
+    { id: 'tulip', name: 'Tulipán', color: 0xd94f70 },
     { id: 'daisy', name: 'Margarita', color: 0xffd93d },
-    { id: 'lily', name: 'Lirio', color: 0xff9ff3 },
+    { id: 'lily', name: 'Lirio', color: 0xf2eee2 },
     { id: 'clover', name: 'Trébol de cuatro hojas', color: 0x4a7c59 },
   ];
 
@@ -34,7 +34,7 @@ const Flower3DViewer = () => {
     // Tulip cup shape (closed petals)
     const cupGeometry = new THREE.ConeGeometry(0.8, 1.2, 6);
     const cupMaterial = new THREE.MeshStandardMaterial({ 
-      color: 0xff6b9d,
+      color: 0xd94f70,
       side: THREE.DoubleSide 
     });
     const cup = new THREE.Mesh(cupGeometry, cupMaterial);
@@ -107,7 +107,7 @@ const Flower3DViewer = () => {
     const petalGeometry = new THREE.SphereGeometry(0.5, 12, 12);
     petalGeometry.scale(0.6, 1.8, 0.3);
     const petalMaterial = new THREE.MeshStandardMaterial({ 
-      color: 0xff9ff3,
+      color: 0xf2eee2,
       side: THREE.DoubleSide 
     });
 

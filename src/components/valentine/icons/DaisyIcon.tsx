@@ -31,7 +31,7 @@ const DaisyIcon = ({
       {/* Stem */}
       <motion.path
         d="M50 140 Q48 110 50 75"
-        stroke="hsl(42, 40%, 45%)"
+        stroke="hsl(105, 38%, 35%)"
         strokeWidth="4"
         fill="none"
         strokeLinecap="round"
@@ -43,7 +43,7 @@ const DaisyIcon = ({
       {/* Leaves */}
       <motion.path
         d="M50 115 Q30 105 25 85 Q40 95 50 105"
-        fill="hsl(42, 45%, 50%)"
+        fill="hsl(105, 42%, 42%)"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8, delay: delay + 0.8 }}
@@ -52,7 +52,7 @@ const DaisyIcon = ({
       
       <motion.path
         d="M50 100 Q70 90 75 70 Q60 80 50 90"
-        fill="hsl(42, 45%, 50%)"
+        fill="hsl(105, 42%, 42%)"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8, delay: delay + 1 }}

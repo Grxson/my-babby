@@ -73,7 +73,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
         >
           <TulipIcon 
             size={120} 
-            color="hsl(38, 60%, 65%)" 
+            color="hsl(347, 62%, 58%)" 
             delay={1}
           />
           <motion.p
@@ -128,7 +128,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
         >
           <LilyIcon 
             size={120} 
-            color="hsl(45, 70%, 75%)" 
+            color="hsl(42, 35%, 92%)" 
             delay={2}
           />
           <motion.p
@@ -156,7 +156,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
         >
           <FourLeafCloverIcon 
             size={110} 
-            color="hsl(42, 50%, 50%)" 
+            color="hsl(105, 42%, 42%)" 
             delay={2.5}
           />
           <motion.p

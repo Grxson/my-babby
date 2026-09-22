@@ -7,7 +7,7 @@ interface TulipIconProps {
   delay?: number;
 }
 
-const TulipIcon = ({ size = 120, color = 'hsl(38, 60%, 65%)', className = '', delay = 0 }: TulipIconProps) => {
+const TulipIcon = ({ size = 120, color = 'hsl(347, 62%, 58%)', className = '', delay = 0 }: TulipIconProps) => {
   return (
     <motion.svg
       width={size}
@@ -21,7 +21,7 @@ const TulipIcon = ({ size = 120, color = 'hsl(38, 60%, 65%)', className = '', de
       {/* Stem */}
       <motion.path
         d="M40 120 Q38 90 40 65"
-        stroke="hsl(42, 40%, 45%)"
+        stroke="hsl(105, 38%, 35%)"
         strokeWidth="4"
         fill="none"
         strokeLinecap="round"
@@ -33,7 +33,7 @@ const TulipIcon = ({ size = 120, color = 'hsl(38, 60%, 65%)', className = '', de
       {/* Left leaf */}
       <motion.path
         d="M40 95 Q25 85 20 70 Q35 78 40 85"
-        fill="hsl(42, 45%, 50%)"
+        fill="hsl(105, 42%, 42%)"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8, delay: delay + 0.8 }}
@@ -43,7 +43,7 @@ const TulipIcon = ({ size = 120, color = 'hsl(38, 60%, 65%)', className = '', de
       {/* Right leaf */}
       <motion.path
         d="M40 85 Q55 75 60 60 Q45 68 40 78"
-        fill="hsl(42, 45%, 50%)"
+        fill="hsl(105, 42%, 42%)"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8, delay: delay + 1 }}
