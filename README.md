@@ -1,43 +1,46 @@
 # KIELENTINES
 
-Interactive Valentine's web app: React, TypeScript, Three.js. Journey from a 404-style entry to envelope, letter, flowers, and extras.
+Experiencia web interactiva de San Valentín construida con React, TypeScript y Three.js.
 
-## Quick Start
+## Requisitos
+
+- Node.js 20 o superior
+- pnpm 11.24.0 (se activa automáticamente mediante Corepack)
+
+## Inicio rápido
 
 ```bash
-git clone <repo-url>
-cd a-gigi-surprise
-npm install
-npm run dev
+corepack enable
+pnpm install
+pnpm dev
 ```
 
-Open `http://localhost:5173`. Default route is the 404-style page; use the Home button to reach the dashboard.
+Abre `http://localhost:5173` en el navegador.
 
-## Cool Features
+## Comandos
 
-- **3D Envelope** – Click-to-open envelope with seal, flap, and paper slide. Sound and particle effects.
-- **F1 Racing** – 3D race with Six cars (Red Bull, Mercedes, Ferrari, McLaren, Alpine, Aston Martin). Competitors, position, speed, finish line. UP/W accelerate, LEFT/RIGHT steer.
-- **Flashcard Generator** – Paste text or upload PDF; auto-generates flashcards with multiple-choice options and study mode.
-- **3D Flower Viewer** – Three.js tulip, daisy, lily, four-leaf clover. Rotate and zoom.
-- **Photobooth** – Webcam capture, filters, design templates (no emojis). Save to gallery.
-- **Voice Recorder** – Record, waveform playback, multiple messages, download.
-- **Love Letter Builder** – Rich text, fonts, colors. Save multiple letters (localStorage).
-- **Countdown Timer** – Target date, animated numbers, particle effects.
-- **Date Planner** – Calendar, activity ideas, save plans.
-- **Love Language Quiz** – Quiz and personalized results.
-- **Scrapbook Creator** – Drag-and-drop photos, notes, stickers; multiple layouts.
-- **Secret Message Decoder** – Puzzles and hidden messages.
-- **Photo Gallery** – Upload, filters, animated reveal on scroll.
-- **Background Music** – Romantic melody; mute/unmute. Available app-wide.
+| Comando | Descripción |
+| --- | --- |
+| `pnpm dev` | Inicia el servidor de desarrollo |
+| `pnpm build` | Genera la versión de producción |
+| `pnpm lint` | Ejecuta ESLint |
+| `pnpm test` | Ejecuta las pruebas |
+| `pnpm preview` | Sirve la compilación de producción |
 
-## Tech
+## Acceso
 
-React 18, TypeScript, Vite, Three.js, Framer Motion, Tailwind, shadcn/ui, PDF.js (flashcards), Web Audio API (sounds + music).
+La pantalla inicial usa una validación local de nombre; no hay cuentas, contraseña ni servidor de autenticación. Los nombres aceptados son `kie`, `kimberlee` y `gigi`, sin importar mayúsculas o espacios al inicio/final.
 
-## Data
+> Es una validación visual, no un mecanismo de seguridad. No debe usarse para proteger información sensible.
 
-Countdown, letters, plans, voice messages, photobooth photos, flashcard sets, and F1 best times persist in localStorage.
+## Privacidad
 
-## License
+Las fotografías personales se eliminaron del proyecto. El recorrido utiliza el marcador local `public/placeholder-recuerdo.svg` para los recuerdos y la pantalla de bienvenida.
 
-Personal gift project.
+## Tecnología
+
+React 18, TypeScript, Vite, Three.js, Framer Motion, Tailwind CSS, shadcn/ui y Web Audio API.
+
+## Licencia
+
+Proyecto personal de regalo.
