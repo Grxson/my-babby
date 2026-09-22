@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import FloatingHearts from '@/components/valentine/FloatingHearts';
 import { useSound } from '@/hooks/useSound';
@@ -34,59 +34,59 @@ const Photobooth = () => {
   const streamRef = useRef<MediaStream | null>(null);
   const { playSound } = useSound();
 
-  const filters = [
-    { name: 'None', value: 'none', class: '' },
+  const filters = useMemo(() => [
+    { name: 'Ninguno', value: 'none', class: '' },
     { name: 'Vintage', value: 'sepia(0.8)', class: 'sepia-80' },
-    { name: 'Warm', value: 'brightness(1.1) saturate(1.2)', class: 'warm' },
-    { name: 'Cool', value: 'brightness(0.95) hue-rotate(10deg)', class: 'cool' },
-    { name: 'Black & White', value: 'grayscale(100%)', class: 'grayscale' },
-    { name: 'Romantic', value: 'sepia(0.3) contrast(1.1) brightness(1.05)', class: 'romantic' },
-    { name: 'Vivid', value: 'saturate(1.5) contrast(1.2)', class: 'vivid' },
-  ];
+    { name: 'Cálido', value: 'brightness(1.1) saturate(1.2)', class: 'warm' },
+    { name: 'Frío', value: 'brightness(0.95) hue-rotate(10deg)', class: 'cool' },
+    { name: 'Blanco y negro', value: 'grayscale(100%)', class: 'grayscale' },
+    { name: 'Romántico', value: 'sepia(0.3) contrast(1.1) brightness(1.05)', class: 'romantic' },
+    { name: 'Intenso', value: 'saturate(1.5) contrast(1.2)', class: 'vivid' },
+  ], []);
 
-  const templates: Template[] = [
+  const templates: Template[] = useMemo(() => [
     {
       id: 'none',
-      name: 'None',
+      name: 'Ninguna',
       overlay: '',
-      description: 'No template',
+      description: 'Sin plantilla',
     },
     {
       id: 'heart-frame',
-      name: 'Heart Frame',
+      name: 'Marco de corazones',
       overlay: '',
-      description: 'Romantic heart border',
+      description: 'Borde romántico de corazones',
     },
     {
       id: 'sparkle',
-      name: 'Sparkle',
+      name: 'Destellos',
       overlay: '',
-      description: 'Magical sparkles',
+      description: 'Destellos mágicos',
     },
     {
       id: 'valentine',
-      name: 'Valentine',
+      name: 'San Valentín',
       overlay: '',
-      description: 'Valentine\'s day special',
+      description: 'Especial de San Valentín',
     },
     {
       id: 'love',
-      name: 'Love',
+      name: 'Amor',
       overlay: '',
-      description: 'Love border',
+      description: 'Borde de amor',
     },
     {
       id: 'flower',
-      name: 'Flower',
+      name: 'Flor',
       overlay: '',
-      description: 'Flower frame',
+      description: 'Marco de flores',
     },
-  ];
+  ], []);
 
   const startCamera = useCallback(async () => {
     if (isCapturing) return;
     if (!navigator.mediaDevices?.getUserMedia) {
-      alert('Camera access is not supported in this browser.');
+      alert('El acceso a la cámara no es compatible con este navegador.');
       return;
     }
 
@@ -109,7 +109,7 @@ const Photobooth = () => {
       playSound('success');
     } catch (error) {
       console.error('Error accessing camera:', error);
-      alert('Please allow camera access to use the photobooth!');
+      alert('¡Permite el acceso a la cámara para usar el fotomatón!');
     }
   }, [isCapturing, playSound]);
 
@@ -127,7 +127,7 @@ const Photobooth = () => {
 
   useEffect(() => () => stopCamera(), [stopCamera]);
 
-  const drawTemplate = (context: CanvasRenderingContext2D, width: number, height: number, templateId: string) => {
+  const drawTemplate = useCallback((context: CanvasRenderingContext2D, width: number, height: number, templateId: string) => {
     const template = templates.find(t => t.id === templateId);
     if (!template || templateId === 'none') return;
 
@@ -145,7 +145,7 @@ const Photobooth = () => {
     context.strokeRect(padding, padding, width - padding * 2, height - padding * 2);
     
     context.restore();
-  };
+  }, [templates]);
 
   const capturePhoto = useCallback(() => {
     if (!videoRef.current || !canvasRef.current) return;
@@ -178,7 +178,7 @@ const Photobooth = () => {
     setPhotos([photo, ...photos]);
     localStorage.setItem('photoboothPhotos', JSON.stringify([photo, ...photos]));
     playSound('success');
-  }, [videoRef, canvasRef, currentFilter, currentTemplate, photos, playSound, filters]);
+  }, [currentFilter, currentTemplate, photos, playSound, filters, drawTemplate]);
 
   const captureWithCountdown = () => {
     if (countdown > 0) return;
@@ -226,10 +226,10 @@ const Photobooth = () => {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-4xl md:text-5xl font-heavy text-primary mb-4">
-            Photobooth
+            Fotomatón
           </h1>
           <p className="text-muted-foreground font-serif-italic">
-            Capture beautiful moments with fun filters and templates, Gigi!
+            ¡Captura momentos hermosos con filtros y plantillas divertidos, Gigi!
           </p>
         </motion.div>
 
@@ -272,7 +272,7 @@ const Photobooth = () => {
                           d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
                         />
                       </svg>
-                      <p className="text-lg">Camera not active</p>
+                      <p className="text-lg">Cámara inactiva</p>
                     </div>
                   </div>
                 )}
@@ -290,7 +290,7 @@ const Photobooth = () => {
 
               {/* Templates */}
               <div className="mb-6">
-                <label className="block text-sm font-medium mb-3">Design Templates:</label>
+                <label className="block text-sm font-medium mb-3">Plantillas de diseño:</label>
                 <div className="grid grid-cols-3 gap-2">
                   {templates.map((template) => (
                     <button
@@ -313,7 +313,7 @@ const Photobooth = () => {
 
               {/* Filters */}
               <div className="mb-6">
-                <label className="block text-sm font-medium mb-3">Filters:</label>
+                <label className="block text-sm font-medium mb-3">Filtros:</label>
                 <div className="flex flex-wrap gap-2">
                   {filters.map((filter) => (
                     <button
@@ -340,7 +340,7 @@ const Photobooth = () => {
                     onClick={startCamera}
                     className="flex-1 btn-romantic py-4 text-lg"
                   >
-                    Start Camera
+                    Iniciar cámara
                   </button>
                 ) : (
                   <>
@@ -349,13 +349,13 @@ const Photobooth = () => {
                       disabled={countdown > 0}
                       className="flex-1 btn-romantic py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {countdown > 0 ? `Capturing in ${countdown}...` : '📸 Take Photo'}
+                      {countdown > 0 ? `Capturando en ${countdown}...` : '📸 Tomar foto'}
                     </button>
                     <button
                       onClick={stopCamera}
                       className="px-6 py-4 bg-red-500 text-white rounded-lg hover:bg-red-600"
                     >
-                      Stop
+                      Detener
                     </button>
                   </>
                 )}
@@ -368,11 +368,11 @@ const Photobooth = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h2 className="text-2xl font-medium mb-4">Your Photos</h2>
+            <h2 className="text-2xl font-medium mb-4">Tus fotos</h2>
             <div className="space-y-4 max-h-[600px] overflow-y-auto">
               {photos.length === 0 ? (
                 <p className="text-center text-muted-foreground py-8 text-sm">
-                  No photos yet. Start capturing!
+                  Aún no hay fotos. ¡Comienza a capturar!
                 </p>
               ) : (
                 photos.map((photo) => (
@@ -385,7 +385,7 @@ const Photobooth = () => {
                   >
                     <img
                       src={photo.dataUrl}
-                      alt="Photobooth"
+                      alt="Fotomatón"
                       className="w-full rounded-lg mb-2"
                       style={{ filter: photo.filter === 'none' ? 'none' : filters.find(f => f.value === photo.filter)?.value }}
                     />
@@ -394,13 +394,13 @@ const Photobooth = () => {
                         onClick={() => downloadPhoto(photo)}
                         className="flex-1 px-3 py-1.5 bg-primary/10 text-primary rounded text-sm hover:bg-primary/20"
                       >
-                        Download
+                        Descargar
                       </button>
                       <button
                         onClick={() => deletePhoto(photo.id)}
                         className="px-3 py-1.5 bg-red-500/10 text-red-500 rounded text-sm hover:bg-red-500/20"
                       >
-                        Delete
+                        Eliminar
                       </button>
                     </div>
                     <p className="text-xs text-muted-foreground mt-2 text-center">

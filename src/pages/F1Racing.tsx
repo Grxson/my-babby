@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as THREE from 'three';
 import { useSound } from '@/hooks/useSound';
@@ -29,6 +29,7 @@ const F1Racing = () => {
   const playerCarRef = useRef<THREE.Group | null>(null);
   const enemiesRef = useRef<THREE.Group[]>([]);
   const animationIdRef = useRef<number | null>(null);
+  const raceTimeRef = useRef(0);
   
   const [selectedCar, setSelectedCar] = useState<Car | null>(null);
   const [isRacing, setIsRacing] = useState(false);
@@ -43,6 +44,20 @@ const F1Racing = () => {
     return saved ? parseFloat(saved) : null;
   });
   const { playSound } = useSound();
+
+  const finishRace = useCallback(() => {
+    const finalTime = raceTimeRef.current;
+    setRaceFinished(true);
+    playSound('success');
+
+    setBestTime((currentBestTime) => {
+      if (!currentBestTime || finalTime < currentBestTime) {
+        localStorage.setItem('f1BestTime', finalTime.toString());
+        return finalTime;
+      }
+      return currentBestTime;
+    });
+  }, [playSound]);
 
   const createF1Car = (color: number): THREE.Group => {
     const group = new THREE.Group();
@@ -100,9 +115,11 @@ const F1Racing = () => {
   useEffect(() => {
     if (!containerRef.current || !isRacing || !selectedCar) return;
 
+    const container = containerRef.current;
+
     // Clear previous renderer
-    if (rendererRef.current && containerRef.current.contains(rendererRef.current.domElement)) {
-      containerRef.current.removeChild(rendererRef.current.domElement);
+    if (rendererRef.current && container.contains(rendererRef.current.domElement)) {
+      container.removeChild(rendererRef.current.domElement);
       rendererRef.current.dispose();
     }
 
@@ -112,7 +129,7 @@ const F1Racing = () => {
 
     const camera = new THREE.PerspectiveCamera(
       75,
-      containerRef.current.clientWidth / containerRef.current.clientHeight,
+      container.clientWidth / container.clientHeight,
       0.1,
       1000
     );
@@ -121,8 +138,8 @@ const F1Racing = () => {
     cameraRef.current = camera;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
-    containerRef.current.appendChild(renderer.domElement);
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
     // Lighting
@@ -286,19 +303,23 @@ const F1Racing = () => {
       }
       if (rendererRef.current) {
         rendererRef.current.dispose();
-        if (containerRef.current && containerRef.current.contains(rendererRef.current.domElement)) {
-          containerRef.current.removeChild(rendererRef.current.domElement);
+        if (container.contains(rendererRef.current.domElement)) {
+          container.removeChild(rendererRef.current.domElement);
         }
         rendererRef.current = null;
       }
     };
-  }, [isRacing, selectedCar, raceFinished, keys]);
+  }, [isRacing, selectedCar, raceFinished, keys, finishRace]);
 
   useEffect(() => {
     if (!isRacing || raceFinished) return;
 
     const interval = setInterval(() => {
-      setRaceTime(prev => prev + 0.1);
+      setRaceTime((prev) => {
+        const nextTime = prev + 0.1;
+        raceTimeRef.current = nextTime;
+        return nextTime;
+      });
     }, 100);
 
     return () => clearInterval(interval);
@@ -344,19 +365,10 @@ const F1Racing = () => {
     setRaceFinished(false);
     setSpeed(0);
     setRaceTime(0);
+    raceTimeRef.current = 0;
     setPosition({ x: 0, z: 0 });
     setPlayerPosition(6);
     playSound('success');
-  };
-
-  const finishRace = () => {
-    setRaceFinished(true);
-    playSound('success');
-    
-    if (!bestTime || raceTime < bestTime) {
-      setBestTime(raceTime);
-      localStorage.setItem('f1BestTime', raceTime.toString());
-    }
   };
 
   const resetRace = () => {
@@ -364,6 +376,7 @@ const F1Racing = () => {
     setRaceFinished(false);
     setSpeed(0);
     setRaceTime(0);
+    raceTimeRef.current = 0;
     setPosition({ x: 0, z: 0 });
     setKeys({ up: false, left: false, right: false });
     playSound('buttonClick');
@@ -399,7 +412,7 @@ const F1Racing = () => {
             FORMULA 1
           </h1>
           <p className="text-2xl text-gray-400 font-black tracking-widest">
-            GRAND PRIX
+            GRAN PREMIO
           </p>
         </motion.div>
 
@@ -431,7 +444,7 @@ const F1Racing = () => {
                 </div>
                 <h3 className="text-2xl font-black text-white mb-1">{car.name}</h3>
                 <p className="text-sm text-gray-400 mb-1 font-bold">{car.team}</p>
-                <p className="text-xs text-gray-500 mb-4 font-bold">Driver: {car.driver}</p>
+                <p className="text-xs text-gray-500 mb-4 font-bold">Piloto: {car.driver}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -451,11 +464,11 @@ const F1Racing = () => {
               </div>
               <h2 className="text-4xl font-black text-white mb-2">{selectedCar.name}</h2>
               <p className="text-gray-400 mb-1 font-bold">{selectedCar.team}</p>
-              <p className="text-gray-500 mb-6 text-sm font-bold">Driver: {selectedCar.driver}</p>
+              <p className="text-gray-500 mb-6 text-sm font-bold">Piloto: {selectedCar.driver}</p>
               
               {bestTime && (
                 <div className="mb-6 p-4 bg-red-900/30 rounded-lg border border-red-500/50">
-                  <p className="text-sm text-gray-400 font-bold mb-1">BEST TIME</p>
+                  <p className="text-sm text-gray-400 font-bold mb-1">MEJOR TIEMPO</p>
                   <p className="text-3xl font-black text-red-400">{formatTime(bestTime)}</p>
                 </div>
               )}
@@ -466,7 +479,7 @@ const F1Racing = () => {
                   className="px-12 py-5 bg-gradient-to-r from-red-600 to-red-700 text-white font-black text-xl rounded-lg hover:from-red-700 hover:to-red-800 transition-all shadow-lg shadow-red-500/50"
                   style={{ textShadow: '0 0 10px rgba(255,255,255,0.5)' }}
                 >
-                  START RACE
+                  INICIAR CARRERA
                 </button>
                 <button
                   onClick={() => {
@@ -475,12 +488,12 @@ const F1Racing = () => {
                   }}
                   className="px-10 py-5 bg-gray-700 text-white font-bold rounded-lg hover:bg-gray-600"
                 >
-                  CHANGE CAR
+                  CAMBIAR AUTO
                 </button>
               </div>
 
               <p className="text-sm text-gray-500 mt-6 font-bold">
-                💡 CONTROLS: UP/W = Accelerate • LEFT/RIGHT = Steer
+                💡 CONTROLES: ARRIBA/W = Acelerar • IZQUIERDA/DERECHA = Girar
               </p>
             </div>
           </motion.div>
@@ -490,19 +503,19 @@ const F1Racing = () => {
             <div className="bg-black/90 backdrop-blur-sm rounded-lg p-4 border-2 border-gray-700">
               <div className="grid grid-cols-4 gap-4 text-center">
                 <div>
-                  <p className="text-xs text-gray-400 font-bold mb-1">TIME</p>
+                  <p className="text-xs text-gray-400 font-bold mb-1">TIEMPO</p>
                   <p className="text-2xl font-black text-white">{formatTime(raceTime)}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400 font-bold mb-1">SPEED</p>
+                  <p className="text-xs text-gray-400 font-bold mb-1">VELOCIDAD</p>
                   <p className="text-2xl font-black text-red-400">{speed} MPH</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400 font-bold mb-1">POSITION</p>
+                  <p className="text-xs text-gray-400 font-bold mb-1">POSICIÓN</p>
                   <p className="text-2xl font-black text-yellow-400">{playerPosition}/6</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400 font-bold mb-1">DISTANCE</p>
+                  <p className="text-xs text-gray-400 font-bold mb-1">DISTANCIA</p>
                   <p className="text-2xl font-black text-green-400">{Math.round(position.z)}m</p>
                 </div>
               </div>
@@ -517,10 +530,10 @@ const F1Racing = () => {
             {/* Controls Info */}
             <div className="bg-black/80 backdrop-blur-sm rounded-lg p-4 border-2 border-gray-700 text-center">
               <p className="text-sm text-gray-400 font-bold">
-                {keys.up && '⬆️ Accelerating • '}
-                {keys.left && '⬅️ Turning Left • '}
-                {keys.right && '➡️ Turning Right'}
-                {!keys.up && !keys.left && !keys.right && 'Press UP/W to accelerate'}
+                {keys.up && '⬆️ Acelerando • '}
+                {keys.left && '⬅️ Girando a la izquierda • '}
+                {keys.right && '➡️ Girando a la derecha'}
+                {!keys.up && !keys.left && !keys.right && 'Pulsa ARRIBA/W para acelerar'}
               </p>
             </div>
 
@@ -530,7 +543,7 @@ const F1Racing = () => {
                 onClick={resetRace}
                 className="px-8 py-3 bg-gray-700 text-white font-bold rounded-lg hover:bg-gray-600"
               >
-                RESET RACE
+                REINICIAR CARRERA
               </button>
             </div>
           </div>
@@ -552,17 +565,17 @@ const F1Racing = () => {
               >
                 <div className="text-8xl mb-6">🏆</div>
                 <h2 className="text-6xl font-black text-white mb-4" style={{ textShadow: '0 0 30px rgba(255,255,0,0.8)' }}>
-                  RACE FINISHED!
+                  ¡CARRERA TERMINADA!
                 </h2>
-                <p className="text-4xl font-black text-yellow-400 mb-2">TIME: {formatTime(raceTime)}</p>
+                <p className="text-4xl font-black text-yellow-400 mb-2">TIEMPO: {formatTime(raceTime)}</p>
                 {bestTime && raceTime < bestTime && (
-                  <p className="text-green-400 font-black mb-6 text-3xl">🎉 NEW BEST TIME!</p>
+                  <p className="text-green-400 font-black mb-6 text-3xl">🎉 ¡NUEVO MEJOR TIEMPO!</p>
                 )}
                 <button
                   onClick={resetRace}
                   className="px-12 py-5 bg-gradient-to-r from-red-600 to-red-700 text-white font-black text-xl rounded-lg hover:from-red-700 hover:to-red-800 transition-all"
                 >
-                  RACE AGAIN
+                  CORRER DE NUEVO
                 </button>
               </motion.div>
             </motion.div>

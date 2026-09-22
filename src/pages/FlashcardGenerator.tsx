@@ -79,7 +79,7 @@ const FlashcardGenerator = () => {
               
               // Ensure we have 4 options total
               while (wrongAnswers.length < 3) {
-                wrongAnswers.push('This is a possible answer option');
+                wrongAnswers.push('Esta es una posible opción de respuesta');
               }
               
               const choices = [answer, ...wrongAnswers].sort(() => Math.random() - 0.5);
@@ -108,14 +108,14 @@ const FlashcardGenerator = () => {
           const otherWords = words.filter(w => w !== word).slice(0, 3);
           const choices = [
             context.trim().substring(0, 80),
-            ...otherWords.map(w => `A term related to ${w.toLowerCase()}`),
-            'None of the above',
-            'All of the above'
+            ...otherWords.map(w => `Un término relacionado con ${w.toLowerCase()}`),
+            'Ninguna de las anteriores',
+            'Todas las anteriores'
           ].slice(0, 4);
           
           flashcards.push({
             id: `${Date.now()}-def-${index}-${i}`,
-            front: `What is ${word}?`,
+            front: `¿Qué es ${word}?`,
             back: context.trim(),
             choices,
             mastery: 0,
@@ -133,13 +133,13 @@ const FlashcardGenerator = () => {
             const choices = [
               cleanPhrase,
               cleanPhrase.substring(0, cleanPhrase.length / 2),
-              'This concept is complex',
-              'Refer to the main text'
+              'Este concepto es complejo',
+              'Consulta el texto principal'
             ];
             
             flashcards.push({
               id: `${Date.now()}-key-${i}`,
-              front: `Explain: ${cleanPhrase.substring(0, 50)}...`,
+              front: `Explica: ${cleanPhrase.substring(0, 50)}...`,
               back: cleanPhrase,
               choices,
               mastery: 0,
@@ -183,7 +183,7 @@ const FlashcardGenerator = () => {
       }
 
       if (!fullText.trim()) {
-        throw new Error('No text could be extracted from this PDF. It might be image-based or encrypted.');
+        throw new Error('No se pudo extraer texto de este PDF. Puede estar basado en imágenes o cifrado.');
       }
 
       return fullText;
@@ -191,11 +191,11 @@ const FlashcardGenerator = () => {
       console.error('Error extracting PDF text:', error);
       const errorMessage = getErrorMessage(error);
       if (errorMessage.includes('Invalid PDF')) {
-        throw new Error('Invalid PDF file. Please check if the file is corrupted.');
+        throw new Error('Archivo PDF no válido. Comprueba si el archivo está dañado.');
       } else if (errorMessage.includes('password')) {
-        throw new Error('This PDF is password protected. Please remove the password and try again.');
+        throw new Error('Este PDF está protegido con contraseña. Elimina la contraseña e inténtalo de nuevo.');
       } else {
-        throw new Error(`Failed to extract text: ${errorMessage || 'Unknown error'}. Please try a different PDF file or convert it to text format.`);
+        throw new Error(`No se pudo extraer el texto: ${errorMessage || 'Error desconocido'}. Prueba con otro archivo PDF o conviértelo a formato de texto.`);
       }
     }
   };
@@ -212,7 +212,7 @@ const FlashcardGenerator = () => {
       } else if (file.type === 'application/pdf' || file.name.endsWith('.pdf')) {
         text = await extractTextFromPDF(file);
       } else if (file.type.startsWith('image/')) {
-        alert('Image OCR requires additional setup. Please copy and paste the text content instead.');
+        alert('El OCR de imágenes requiere una configuración adicional. Copia y pega el contenido de texto en su lugar.');
         setIsGenerating(false);
         return;
       } else {
@@ -222,7 +222,7 @@ const FlashcardGenerator = () => {
       setUploadedText(text);
       
       setTimeout(() => {
-        const setName = file.name.replace(/\.[^/.]+$/, '') || 'New Set';
+        const setName = file.name.replace(/\.[^/.]+$/, '') || 'Nuevo conjunto';
         const flashcards = generateFlashcards(text, setName);
         
         const newSet: FlashcardSet = {
@@ -257,7 +257,7 @@ const FlashcardGenerator = () => {
     playSound('buttonClick');
 
     setTimeout(() => {
-      const setName = `Lesson ${sets.length + 1}`;
+      const setName = `Lección ${sets.length + 1}`;
       const flashcards = generateFlashcards(uploadedText, setName);
       
       const newSet: FlashcardSet = {
@@ -369,10 +369,10 @@ const FlashcardGenerator = () => {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-4xl md:text-5xl font-heavy text-primary mb-4">
-            Flashcard Generator
+            Generador de tarjetas de estudio
           </h1>
           <p className="text-muted-foreground font-serif-italic">
-            Upload your lessons and I'll create flashcards for you, Gigi!
+            ¡Sube tus lecciones y crearé tarjetas de estudio para ti, Gigi!
           </p>
         </motion.div>
 
@@ -384,7 +384,7 @@ const FlashcardGenerator = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <h2 className="text-2xl font-medium mb-6">Upload Your Lesson</h2>
+              <h2 className="text-2xl font-medium mb-6">Sube tu lección</h2>
               
               <div className="space-y-4">
                 <div
@@ -414,17 +414,17 @@ const FlashcardGenerator = () => {
                       d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                     />
                   </svg>
-                  <p className="text-lg font-medium mb-2">Click to upload a file</p>
-                  <p className="text-sm text-muted-foreground">Supports .txt and .pdf files</p>
+                  <p className="text-lg font-medium mb-2">Haz clic para subir un archivo</p>
+                  <p className="text-sm text-muted-foreground">Admite archivos .txt y .pdf</p>
                 </div>
 
-                <div className="text-center text-muted-foreground">or</div>
+                <div className="text-center text-muted-foreground">o</div>
 
                 <textarea
                   ref={textareaRef}
                   value={uploadedText}
                   onChange={(e) => setUploadedText(e.target.value)}
-                  placeholder="Paste your lesson content here..."
+                  placeholder="Pega aquí el contenido de tu lección..."
                   className="w-full h-48 px-4 py-3 rounded-lg border-2 border-primary/30 focus:border-primary focus:outline-none resize-none"
                 />
 
@@ -433,7 +433,7 @@ const FlashcardGenerator = () => {
                   disabled={isGenerating || !uploadedText.trim()}
                   className="w-full btn-romantic py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isGenerating ? 'Generating Flashcards...' : 'Generate Flashcards'}
+                  {isGenerating ? 'Generando tarjetas...' : 'Generar tarjetas'}
                 </button>
               </div>
             </motion.div>
@@ -443,10 +443,10 @@ const FlashcardGenerator = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              <h2 className="text-2xl font-medium mb-6">Your Flashcard Sets</h2>
+              <h2 className="text-2xl font-medium mb-6">Tus conjuntos de tarjetas</h2>
               {sets.length === 0 ? (
                 <p className="text-center text-muted-foreground py-12">
-                  No flashcard sets yet. Upload a lesson to get started!
+                  Aún no hay conjuntos de tarjetas. ¡Sube una lección para comenzar!
                 </p>
               ) : (
                 <div className="grid md:grid-cols-2 gap-4">
@@ -460,24 +460,24 @@ const FlashcardGenerator = () => {
                         <div>
                           <h3 className="text-xl font-medium mb-1">{set.name}</h3>
                           <p className="text-sm text-muted-foreground">
-                            {set.flashcards.length} flashcards
+                            {set.flashcards.length} tarjetas
                           </p>
                           <p className="text-xs text-muted-foreground">
-                            Created {new Date(set.createdAt).toLocaleDateString()}
+                            Creado el {new Date(set.createdAt).toLocaleDateString()}
                           </p>
                         </div>
                         <button
                           onClick={() => deleteSet(set.id)}
                           className="text-red-500 hover:text-red-600 text-sm"
                         >
-                          Delete
+                          Eliminar
                         </button>
                       </div>
                       <button
                         onClick={() => startStudy(set)}
                         className="w-full btn-romantic py-2"
                       >
-                        Study Now
+                        Estudiar ahora
                       </button>
                     </motion.div>
                   ))}
@@ -495,9 +495,9 @@ const FlashcardGenerator = () => {
               <div className="bg-white/90 backdrop-blur-sm rounded-lg p-4">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-sm font-medium">
-                    Card {currentCardIndex + 1} of {currentSet.flashcards.length}
+                    Tarjeta {currentCardIndex + 1} de {currentSet.flashcards.length}
                   </span>
-                  <span className="text-sm text-muted-foreground">{progress}% Mastered</span>
+                  <span className="text-sm text-muted-foreground">{progress}% dominado</span>
                 </div>
                 <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
                   <motion.div
@@ -515,7 +515,7 @@ const FlashcardGenerator = () => {
                 animate={{ opacity: 1, y: 0 }}
               >
                 <div className="text-center mb-6">
-                  <div className="text-sm text-muted-foreground mb-4">Question</div>
+                  <div className="text-sm text-muted-foreground mb-4">Pregunta</div>
                   <div className="text-2xl font-medium mb-6">{currentSet.flashcards[currentCardIndex].front}</div>
                 </div>
 
@@ -585,11 +585,11 @@ const FlashcardGenerator = () => {
                       >
                         <p className="text-sm font-medium mb-1">
                           {selectedChoice?.toLowerCase().trim() === currentSet.flashcards[currentCardIndex].back.toLowerCase().trim() 
-                            ? '✓ Correct!' 
-                            : '✗ Incorrect'}
+                            ? '✓ ¡Correcto!' 
+                            : '✗ Incorrecto'}
                         </p>
                         <p className="text-sm text-muted-foreground">
-                          <strong>Answer:</strong> {currentSet.flashcards[currentCardIndex].back}
+                          <strong>Respuesta:</strong> {currentSet.flashcards[currentCardIndex].back}
                         </p>
                       </motion.div>
                     )}
@@ -612,7 +612,7 @@ const FlashcardGenerator = () => {
                         whileHover={{ scale: 1.02 }}
                       >
                         <div className="text-center">
-                          <div className="text-sm text-muted-foreground mb-4">Click to see answer</div>
+                          <div className="text-sm text-muted-foreground mb-4">Haz clic para ver la respuesta</div>
                         </div>
                       </motion.div>
 
@@ -623,7 +623,7 @@ const FlashcardGenerator = () => {
                         whileHover={{ scale: 1.02 }}
                       >
                         <div className="text-center">
-                          <div className="text-sm text-muted-foreground mb-4">Answer</div>
+                          <div className="text-sm text-muted-foreground mb-4">Respuesta</div>
                           <div className="text-xl">{currentSet.flashcards[currentCardIndex].back}</div>
                         </div>
                       </motion.div>
@@ -638,14 +638,14 @@ const FlashcardGenerator = () => {
                   disabled={currentCardIndex === 0}
                   className="flex-1 px-4 py-3 bg-white/90 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white transition-colors"
                 >
-                  Previous
+                  Anterior
                 </button>
                 {!currentSet.flashcards[currentCardIndex].choices && (
                   <button
                     onClick={flipCard}
                     className="flex-1 px-4 py-3 btn-romantic"
                   >
-                    {isFlipped ? 'Show Question' : 'Show Answer'}
+                    {isFlipped ? 'Mostrar pregunta' : 'Mostrar respuesta'}
                   </button>
                 )}
                 <button
@@ -653,7 +653,7 @@ const FlashcardGenerator = () => {
                   disabled={currentCardIndex === currentSet.flashcards.length - 1}
                   className="flex-1 px-4 py-3 bg-white/90 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white transition-colors"
                 >
-                  Next
+                  Siguiente
                 </button>
               </div>
 
@@ -664,13 +664,13 @@ const FlashcardGenerator = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  <p className="text-sm font-medium mb-3 text-center">How well did you know this?</p>
+                  <p className="text-sm font-medium mb-3 text-center">¿Qué tan bien sabías esto?</p>
                   <div className="flex gap-2">
                     {[
-                      { label: 'Again', value: 0, color: 'bg-red-500' },
-                      { label: 'Hard', value: 25, color: 'bg-orange-500' },
-                      { label: 'Good', value: 75, color: 'bg-green-500' },
-                      { label: 'Easy', value: 100, color: 'bg-blue-500' },
+                      { label: 'Otra vez', value: 0, color: 'bg-red-500' },
+                      { label: 'Difícil', value: 25, color: 'bg-orange-500' },
+                      { label: 'Bien', value: 75, color: 'bg-green-500' },
+                      { label: 'Fácil', value: 100, color: 'bg-blue-500' },
                     ].map(({ label, value, color }) => (
                       <button
                         key={label}
@@ -707,7 +707,7 @@ const FlashcardGenerator = () => {
                 }}
                 className="w-full px-4 py-3 bg-white/90 rounded-lg hover:bg-white transition-colors"
               >
-                Back to Sets
+                Volver a los conjuntos
               </button>
             </motion.div>
           )

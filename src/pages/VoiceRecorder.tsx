@@ -67,7 +67,7 @@ const VoiceRecorder = () => {
       }, 1000);
     } catch (error) {
       console.error('Error accessing microphone:', error);
-      alert('Please allow microphone access to record voice messages');
+      alert('Permite el acceso al micrófono para grabar mensajes de voz');
     }
   };
 
@@ -147,10 +147,10 @@ const VoiceRecorder = () => {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-4xl md:text-5xl font-heavy text-primary mb-4">
-            Voice Message Recorder
+            Grabadora de mensajes de voz
           </h1>
           <p className="text-muted-foreground font-serif-italic">
-            Record and share your voice messages
+            Graba y comparte tus mensajes de voz
           </p>
         </motion.div>
 
@@ -191,14 +191,14 @@ const VoiceRecorder = () => {
                 onClick={startRecording}
                 className="px-8 py-4 btn-romantic text-lg"
               >
-                Start Recording
+                Iniciar grabación
               </button>
             ) : (
               <button
                 onClick={stopRecording}
                 className="px-8 py-4 bg-red-500 text-white rounded-full text-lg hover:bg-red-600"
               >
-                Stop Recording
+                Detener grabación
               </button>
             )}
           </div>
@@ -211,10 +211,10 @@ const VoiceRecorder = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <h2 className="text-2xl font-medium mb-4">Your Voice Messages</h2>
+          <h2 className="text-2xl font-medium mb-4">Tus mensajes de voz</h2>
           {messages.length === 0 ? (
             <p className="text-center text-muted-foreground py-12">
-              No voice messages yet. Start recording to create your first message!
+              Aún no hay mensajes de voz. ¡Comienza a grabar para crear tu primer mensaje!
             </p>
           ) : (
             messages.map((message) => (
@@ -257,13 +257,13 @@ const VoiceRecorder = () => {
                       onClick={() => downloadMessage(message)}
                       className="px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20"
                     >
-                      Download
+                      Descargar
                     </button>
                     <button
                       onClick={() => deleteMessage(message.id)}
                       className="px-4 py-2 bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20"
                     >
-                      Delete
+                      Eliminar
                     </button>
                   </div>
                 </div>

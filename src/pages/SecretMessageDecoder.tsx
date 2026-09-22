@@ -20,8 +20,8 @@ const puzzles: Puzzle[] = [
     type: 'caesar',
     difficulty: 'easy',
     encoded: 'Kpio cp f yknn',
-    decoded: 'Love is a gift',
-    hint: 'Shift each letter back by 2',
+    decoded: 'El amor es un regalo',
+    hint: 'Desplaza cada letra dos posiciones hacia atrás',
     reward: '💕',
   },
   {
@@ -29,8 +29,8 @@ const puzzles: Puzzle[] = [
     type: 'reverse',
     difficulty: 'easy',
     encoded: 'uoy evol I',
-    decoded: 'I love you',
-    hint: 'Read it backwards',
+    decoded: 'Te amo',
+    hint: 'Léelo al revés',
     reward: '❤️',
   },
   {
@@ -38,8 +38,8 @@ const puzzles: Puzzle[] = [
     type: 'substitution',
     difficulty: 'medium',
     encoded: 'YBLF ZPV',
-    decoded: 'LOVE YOU',
-    hint: 'Each letter is shifted forward by 1',
+    decoded: 'TE AMO',
+    hint: 'Cada letra está desplazada una posición hacia adelante',
     reward: '💖',
   },
   {
@@ -47,8 +47,8 @@ const puzzles: Puzzle[] = [
     type: 'morse',
     difficulty: 'medium',
     encoded: '.-.. --- ...- . / -.-- --- ..-',
-    decoded: 'LOVE YOU',
-    hint: 'Morse code: . = dot, - = dash',
+    decoded: 'TE AMO',
+    hint: 'Código Morse: . = punto, - = raya',
     reward: '🌹',
   },
   {
@@ -56,8 +56,8 @@ const puzzles: Puzzle[] = [
     type: 'caesar',
     difficulty: 'hard',
     encoded: 'Qxgt vjg yqtm',
-    decoded: 'Meet the world',
-    hint: 'Shift back by 2',
+    decoded: 'Conoce el mundo',
+    hint: 'Desplaza dos posiciones hacia atrás',
     reward: '✨',
   },
 ];
@@ -103,7 +103,7 @@ const SecretMessageDecoder = () => {
       }, 2000);
     } else {
       playSound('buttonClick');
-      alert('Not quite right! Try again or use the hint.');
+      alert('¡No es del todo correcto! Inténtalo de nuevo o usa la pista.');
     }
   };
 
@@ -121,10 +121,10 @@ const SecretMessageDecoder = () => {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-4xl md:text-5xl font-heavy text-primary mb-4">
-            Secret Message Decoder
+            Descodificador de mensajes secretos
           </h1>
           <p className="text-muted-foreground font-serif-italic">
-            Decode hidden messages and unlock rewards
+            Descifra mensajes ocultos y desbloquea recompensas
           </p>
         </motion.div>
 
@@ -137,10 +137,10 @@ const SecretMessageDecoder = () => {
         >
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm text-muted-foreground">
-              Puzzle {currentPuzzle + 1} of {puzzles.length}
+              Acertijo {currentPuzzle + 1} de {puzzles.length}
             </span>
             <span className="text-sm text-muted-foreground">
-              Solved: {solvedPuzzles.length}/{puzzles.length}
+              Resueltos: {solvedPuzzles.length}/{puzzles.length}
             </span>
           </div>
           <div className="w-full h-3 bg-muted rounded-full overflow-hidden">
@@ -173,7 +173,7 @@ const SecretMessageDecoder = () => {
                       : 'bg-red-100 text-red-700'
                   }`}
                 >
-                  {puzzles[currentPuzzle].difficulty.toUpperCase()}
+                  {{ easy: 'FÁCIL', medium: 'MEDIO', hard: 'DIFÍCIL' }[puzzles[currentPuzzle].difficulty]}
                 </span>
                 <span className="text-2xl">{puzzles[currentPuzzle].reward}</span>
               </div>
@@ -193,7 +193,7 @@ const SecretMessageDecoder = () => {
                     exit={{ opacity: 0, height: 0 }}
                   >
                     <p className="text-sm text-primary">
-                      <strong>Hint:</strong> {puzzles[currentPuzzle].hint}
+                      <strong>Pista:</strong> {puzzles[currentPuzzle].hint}
                     </p>
                   </motion.div>
                 )}
@@ -203,7 +203,7 @@ const SecretMessageDecoder = () => {
                 type="text"
                 value={userAnswer}
                 onChange={(e) => setUserAnswer(e.target.value)}
-                placeholder="Enter your decoded message..."
+                placeholder="Introduce tu mensaje descifrado..."
                 className="w-full px-4 py-3 rounded-lg border-2 border-primary/30 focus:border-primary focus:outline-none mb-4"
                 onKeyPress={(e) => e.key === 'Enter' && checkAnswer()}
               />
@@ -213,7 +213,7 @@ const SecretMessageDecoder = () => {
                   onClick={checkAnswer}
                   className="flex-1 btn-romantic py-3"
                 >
-                  Decode
+                  Descifrar
                 </button>
                 <button
                   onClick={() => {
@@ -222,7 +222,7 @@ const SecretMessageDecoder = () => {
                   }}
                   className="px-6 py-3 bg-primary/10 text-primary rounded-lg hover:bg-primary/20"
                 >
-                  {showHint ? 'Hide' : 'Show'} Hint
+                  {showHint ? 'Ocultar' : 'Mostrar'} pista
                 </button>
               </div>
             </div>
@@ -236,9 +236,9 @@ const SecretMessageDecoder = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
           >
-            <h2 className="text-3xl font-medium mb-4">🎉 Congratulations! 🎉</h2>
+            <h2 className="text-3xl font-medium mb-4">🎉 ¡Felicidades! 🎉</h2>
             <p className="text-lg text-muted-foreground mb-6">
-              You've decoded all the secret messages!
+              ¡Has descifrado todos los mensajes secretos!
             </p>
             <button
               onClick={() => {
@@ -250,7 +250,7 @@ const SecretMessageDecoder = () => {
               }}
               className="px-8 py-3 btn-romantic"
             >
-              Play Again
+              Jugar de nuevo
             </button>
           </motion.div>
         )}

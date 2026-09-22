@@ -13,15 +13,19 @@ const Flower3DViewer = () => {
   const animationIdRef = useRef<number | null>(null);
   const [selectedFlower, setSelectedFlower] = useState('tulip');
   const [isRotating, setIsRotating] = useState(true);
-  const [isDragging, setIsDragging] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const viewerStateRef = useRef({
+    isRotating: true,
+    isDragging: false,
+    mousePosition: { x: 0, y: 0 },
+  });
+  const createFlowerRef = useRef<(flowerId: string) => THREE.Group>(() => new THREE.Group());
   const { playSound } = useSound();
 
   const flowers = [
-    { id: 'tulip', name: 'Tulip', color: 0xff6b9d },
-    { id: 'daisy', name: 'Daisy', color: 0xffd93d },
-    { id: 'lily', name: 'Lily', color: 0xff9ff3 },
-    { id: 'clover', name: '4-Leaf Clover', color: 0x4a7c59 },
+    { id: 'tulip', name: 'Tulipán', color: 0xff6b9d },
+    { id: 'daisy', name: 'Margarita', color: 0xffd93d },
+    { id: 'lily', name: 'Lirio', color: 0xff9ff3 },
+    { id: 'clover', name: 'Trébol de cuatro hojas', color: 0x4a7c59 },
   ];
 
   const createTulip = () => {
@@ -207,16 +211,19 @@ const Flower3DViewer = () => {
     }
   };
 
+  createFlowerRef.current = createFlower;
+
   useEffect(() => {
     if (!containerRef.current) return;
 
+    const container = containerRef.current;
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf5f5f5);
     sceneRef.current = scene;
 
     const camera = new THREE.PerspectiveCamera(
       75,
-      containerRef.current.clientWidth / containerRef.current.clientHeight,
+      container.clientWidth / container.clientHeight,
       0.1,
       1000
     );
@@ -224,9 +231,9 @@ const Flower3DViewer = () => {
     cameraRef.current = camera;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
+    renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.shadowMap.enabled = true;
-    containerRef.current.appendChild(renderer.domElement);
+    container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -241,7 +248,7 @@ const Flower3DViewer = () => {
     pointLight.position.set(-5, 5, -5);
     scene.add(pointLight);
 
-    const flower = createFlower(selectedFlower);
+    const flower = createFlowerRef.current('tulip');
     flower.castShadow = true;
     scene.add(flower);
     flowerRef.current = flower;
@@ -257,13 +264,14 @@ const Flower3DViewer = () => {
     const animate = () => {
       animationIdRef.current = requestAnimationFrame(animate);
 
-      if (flowerRef.current && isRotating) {
+      if (flowerRef.current && viewerStateRef.current.isRotating) {
         flowerRef.current.rotation.y += 0.01;
       }
 
-      if (isDragging) {
-        camera.position.x += (mousePosition.x * 2 - camera.position.x) * 0.1;
-        camera.position.y += (mousePosition.y * 2 + 1 - camera.position.y) * 0.1;
+      if (viewerStateRef.current.isDragging) {
+        const { x, y } = viewerStateRef.current.mousePosition;
+        camera.position.x += (x * 2 - camera.position.x) * 0.1;
+        camera.position.y += (y * 2 + 1 - camera.position.y) * 0.1;
         camera.lookAt(0, 0, 0);
       }
 
@@ -284,11 +292,15 @@ const Flower3DViewer = () => {
       const rect = containerRef.current.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-      setMousePosition({ x, y });
+      viewerStateRef.current.mousePosition = { x, y };
     };
 
-    const handleMouseDown = () => setIsDragging(true);
-    const handleMouseUp = () => setIsDragging(false);
+    const handleMouseDown = () => {
+      viewerStateRef.current.isDragging = true;
+    };
+    const handleMouseUp = () => {
+      viewerStateRef.current.isDragging = false;
+    };
 
     containerRef.current.addEventListener('mousemove', handleMouseMove);
     containerRef.current.addEventListener('mousedown', handleMouseDown);
@@ -297,12 +309,10 @@ const Flower3DViewer = () => {
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      if (containerRef.current) {
-        containerRef.current.removeEventListener('mousemove', handleMouseMove);
-        containerRef.current.removeEventListener('mousedown', handleMouseDown);
-        containerRef.current.removeEventListener('mouseup', handleMouseUp);
-        containerRef.current.removeEventListener('mouseleave', handleMouseUp);
-      }
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mousedown', handleMouseDown);
+      container.removeEventListener('mouseup', handleMouseUp);
+      container.removeEventListener('mouseleave', handleMouseUp);
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current);
       }
@@ -316,7 +326,7 @@ const Flower3DViewer = () => {
     if (!sceneRef.current || !flowerRef.current) return;
 
     sceneRef.current.remove(flowerRef.current);
-    const newFlower = createFlower(selectedFlower);
+    const newFlower = createFlowerRef.current(selectedFlower);
     newFlower.castShadow = true;
     sceneRef.current.add(newFlower);
     flowerRef.current = newFlower;
@@ -333,10 +343,10 @@ const Flower3DViewer = () => {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-4xl md:text-5xl font-heavy text-primary mb-4">
-            3D Flower Viewer
+            Visor de flores en 3D
           </h1>
           <p className="text-muted-foreground font-serif-italic">
-            Explore beautiful flowers in 3D - Click and drag to rotate!
+            Explora hermosas flores en 3D: ¡haz clic y arrastra para girarlas!
           </p>
         </motion.div>
 
@@ -347,7 +357,7 @@ const Flower3DViewer = () => {
           transition={{ delay: 0.2 }}
         >
           {flowers.map((flower) => (
-            <button
+            <motion.button
               key={flower.id}
               onClick={() => {
                 setSelectedFlower(flower.id);
@@ -362,7 +372,7 @@ const Flower3DViewer = () => {
               whileTap={{ scale: 0.95 }}
             >
               {flower.name}
-            </button>
+            </motion.button>
           ))}
         </motion.div>
 
@@ -374,7 +384,7 @@ const Flower3DViewer = () => {
           transition={{ delay: 0.3 }}
         >
           {!containerRef.current && (
-            <div className="text-muted-foreground">Loading 3D viewer...</div>
+            <div className="text-muted-foreground">Cargando el visor 3D...</div>
           )}
         </motion.div>
 
@@ -386,12 +396,15 @@ const Flower3DViewer = () => {
         >
           <button
             onClick={() => {
-              setIsRotating(!isRotating);
+              setIsRotating((isRotationEnabled) => {
+                viewerStateRef.current.isRotating = !isRotationEnabled;
+                return !isRotationEnabled;
+              });
               playSound('buttonClick');
             }}
             className="px-6 py-3 bg-primary/10 text-primary rounded-lg hover:bg-primary/20"
           >
-            {isRotating ? 'Pause' : 'Play'} Rotation
+            {isRotating ? 'Pausar' : 'Reanudar'} rotación
           </button>
           <button
             onClick={() => {
@@ -406,7 +419,7 @@ const Flower3DViewer = () => {
             }}
             className="px-6 py-3 bg-primary/10 text-primary rounded-lg hover:bg-primary/20"
           >
-            Reset View
+            Restablecer vista
           </button>
         </motion.div>
 
@@ -416,7 +429,7 @@ const Flower3DViewer = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          💡 Tip: Click and drag to rotate the camera around the flower
+          💡 Consejo: haz clic y arrastra para girar la cámara alrededor de la flor
         </motion.p>
       </div>
     </div>
