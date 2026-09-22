@@ -6,107 +6,94 @@ import { useSound } from '@/hooks/useSound';
 const features = [
   {
     id: 'photo-gallery',
-    title: 'Photo Gallery',
-    description: 'Upload and relive beautiful memories together',
+    title: 'Galería de fotos',
+    description: 'Sube y revive juntos nuestros hermosos recuerdos',
     icon: '📸',
     path: '/photo-gallery',
-    gradient: 'from-blue-500 via-blue-400 to-cyan-500',
   },
   {
     id: 'countdown',
-    title: 'Countdown Timer',
-    description: 'Count down to your special moments',
+    title: 'Cuenta regresiva',
+    description: 'Cuenta los días para nuestros momentos especiales',
     icon: '⏰',
     path: '/countdown',
-    gradient: 'from-purple-500 via-purple-400 to-pink-500',
   },
   {
     id: 'love-letter',
-    title: 'Love Letter Builder',
-    description: 'Write your heart out with beautiful letters',
+    title: 'Creador de cartas de amor',
+    description: 'Expresa tu corazón con hermosas cartas',
     icon: '💌',
     path: '/love-letter',
-    gradient: 'from-pink-500 via-rose-400 to-red-500',
   },
   {
     id: 'music',
-    title: 'Music Playlist',
-    description: 'Create your romantic playlist together',
+    title: 'Lista de música',
+    description: 'Creemos juntos nuestra lista de música romántica',
     icon: '🎵',
     path: '/music',
-    gradient: 'from-green-500 via-emerald-400 to-teal-500',
   },
   {
     id: 'date-planner',
-    title: 'Date Planner',
-    description: 'Plan your perfect dates together',
+    title: 'Planificador de citas',
+    description: 'Planeemos juntos nuestras citas perfectas',
     icon: '📅',
     path: '/date-planner',
-    gradient: 'from-orange-500 via-amber-400 to-yellow-500',
   },
   {
     id: 'love-language',
-    title: 'Love Language Quiz',
-    description: 'Discover how you give and receive love',
+    title: 'Cuestionario de lenguajes del amor',
+    description: 'Descubre cómo das y recibes amor',
     icon: '💝',
     path: '/love-language',
-    gradient: 'from-red-500 via-pink-400 to-rose-500',
   },
   {
     id: 'scrapbook',
-    title: 'Scrapbook Creator',
-    description: 'Create beautiful digital scrapbooks',
+    title: 'Creador de álbumes',
+    description: 'Crea hermosos álbumes digitales',
     icon: '📖',
     path: '/scrapbook',
-    gradient: 'from-yellow-500 via-amber-400 to-orange-500',
   },
   {
     id: 'voice',
-    title: 'Voice Recorder',
-    description: 'Record and share voice messages',
+    title: 'Grabadora de voz',
+    description: 'Graba y comparte mensajes de voz',
     icon: '🎤',
     path: '/voice',
-    gradient: 'from-indigo-500 via-purple-400 to-pink-500',
   },
   {
     id: 'flower-3d',
-    title: '3D Flower Viewer',
-    description: 'Explore beautiful flowers in 3D',
+    title: 'Visor de flores en 3D',
+    description: 'Explora hermosas flores en 3D',
     icon: '🌺',
     path: '/flower-3d',
-    gradient: 'from-rose-500 via-pink-400 to-fuchsia-500',
   },
   {
     id: 'decoder',
-    title: 'Secret Decoder',
-    description: 'Decode hidden messages and unlock rewards',
+    title: 'Decodificador secreto',
+    description: 'Descifra mensajes ocultos y desbloquea recompensas',
     icon: '🔐',
     path: '/decoder',
-    gradient: 'from-teal-500 via-cyan-400 to-blue-500',
   },
   {
     id: 'flashcards',
-    title: 'Flashcard Generator',
-    description: 'Upload lessons and create flashcards automatically',
+    title: 'Generador de tarjetas de estudio',
+    description: 'Sube lecciones y crea tarjetas de estudio automáticamente',
     icon: '📚',
     path: '/flashcards',
-    gradient: 'from-violet-500 via-purple-400 to-indigo-500',
   },
   {
     id: 'photobooth',
-    title: 'Photobooth',
-    description: 'Capture beautiful moments with fun filters',
+    title: 'Fotomatón',
+    description: 'Captura hermosos momentos con filtros divertidos',
     icon: '📷',
     path: '/photobooth',
-    gradient: 'from-cyan-500 via-blue-400 to-indigo-500',
   },
   {
     id: 'f1-racing',
-    title: 'F1 Racing',
-    description: 'Race with different F1 cars',
+    title: 'Carreras de F1',
+    description: 'Corre con distintos autos de F1',
     icon: '🏎️',
     path: '/f1-racing',
-    gradient: 'from-red-500 via-orange-400 to-yellow-500',
   },
 ];
 
@@ -149,12 +136,12 @@ const Home = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-6xl md:text-8xl font-heavy text-primary mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
+            className="text-6xl md:text-8xl font-heavy mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
           >
-            Welcome, Gigi
+            Bienvenida, Gigi
           </motion.h1>
           <motion.p
             className="text-2xl md:text-3xl text-muted-foreground font-serif-italic mb-4"
@@ -162,7 +149,7 @@ const Home = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            Explore all the features I've created for you
+            Explora todas las funciones que he creado para ti
           </motion.p>
           <motion.div
             className="w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto"
@@ -186,13 +173,13 @@ const Home = () => {
                 className="block h-full group"
               >
                 <motion.div
-                  className={`bg-gradient-to-br ${feature.gradient} rounded-2xl p-6 shadow-elevated h-full text-white relative overflow-hidden transition-all duration-300`}
+                  className="bg-card/90 backdrop-blur-sm border border-primary/20 rounded-2xl p-6 shadow-elevated h-full text-foreground relative overflow-hidden transition-all duration-300 hover:border-accent/50 hover:bg-romantic/20"
                   whileHover={{ scale: 1.05, y: -8, rotate: 1 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   {/* Shine effect */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
                   />
                   
                   {/* Icon */}
@@ -210,11 +197,11 @@ const Home = () => {
                   {/* Content */}
                   <div className="relative z-10">
                     <h2 className="text-2xl font-bold mb-2">{feature.title}</h2>
-                    <p className="text-white/90 text-sm leading-relaxed">{feature.description}</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
                   </div>
 
                   {/* Decorative corner */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-bl-full" />
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-romantic/40 rounded-bl-full" />
                 </motion.div>
               </Link>
             </motion.div>
@@ -234,7 +221,7 @@ const Home = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Start Valentine's Journey
+            Comienza nuestro viaje de San Valentín
           </MotionLink>
         </motion.div>
       </div>

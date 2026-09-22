@@ -19,12 +19,12 @@ const PhotoGallery = () => {
   const { playSound } = useSound();
 
   const filters = [
-    { name: 'None', value: 'none' },
+    { name: 'Sin filtro', value: 'none' },
     { name: 'Vintage', value: 'sepia(0.8)' },
-    { name: 'Warm', value: 'brightness(1.1) saturate(1.2)' },
-    { name: 'Cool', value: 'brightness(0.95) hue-rotate(10deg)' },
-    { name: 'Soft', value: 'contrast(0.9) brightness(1.05)' },
-    { name: 'Romantic', value: 'sepia(0.3) contrast(1.1) brightness(1.05)' },
+    { name: 'Cálido', value: 'brightness(1.1) saturate(1.2)' },
+    { name: 'Frío', value: 'brightness(0.95) hue-rotate(10deg)' },
+    { name: 'Suave', value: 'contrast(0.9) brightness(1.05)' },
+    { name: 'Romántico', value: 'sepia(0.3) contrast(1.1) brightness(1.05)' },
   ];
 
   const handleFileSelect = useCallback((files: FileList | null) => {
@@ -89,7 +89,7 @@ const PhotoGallery = () => {
         <div className="relative overflow-hidden rounded-2xl shadow-elevated">
           <img
             src={photo.preview}
-            alt={`Memory ${index + 1}`}
+            alt={`Recuerdo ${index + 1}`}
             className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
             style={{ filter: photo.filter }}
           />
@@ -111,7 +111,7 @@ const PhotoGallery = () => {
                 onClick={() => removePhoto(photo.id)}
                 className="w-full px-4 py-2 bg-red-500/90 text-white rounded text-sm hover:bg-red-600 transition-colors"
               >
-                Remove
+                Eliminar
               </button>
             </div>
           </div>
@@ -132,10 +132,10 @@ const PhotoGallery = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl md:text-5xl font-heavy text-primary mb-4">
-            Our Photo Gallery
+            Nuestra galería de fotos
           </h1>
           <p className="text-muted-foreground font-serif-italic text-lg">
-            Upload and relive our beautiful memories together
+            Sube y revive juntos nuestros hermosos recuerdos
           </p>
         </motion.div>
 
@@ -181,9 +181,9 @@ const PhotoGallery = () => {
               />
             </svg>
             <p className="text-xl font-medium text-foreground mb-2">
-              {isDragging ? 'Drop your photos here' : 'Drag & drop photos here'}
+              {isDragging ? 'Suelta tus fotos aquí' : 'Arrastra y suelta tus fotos aquí'}
             </p>
-            <p className="text-muted-foreground">or click to browse</p>
+            <p className="text-muted-foreground">o haz clic para seleccionarlas</p>
           </motion.div>
         </motion.div>
 
@@ -210,7 +210,7 @@ const PhotoGallery = () => {
             transition={{ delay: 0.5 }}
           >
             <p className="text-muted-foreground text-lg font-serif-italic">
-              No photos yet. Start uploading to create your memory gallery!
+              Aún no hay fotos. ¡Comienza a subirlas para crear tu galería de recuerdos!
             </p>
           </motion.div>
         )}

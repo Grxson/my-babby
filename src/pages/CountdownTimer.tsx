@@ -4,6 +4,16 @@ import FloatingHearts from '@/components/valentine/FloatingHearts';
 import ParticleSystem from '@/components/valentine/ParticleSystem';
 import { useSound } from '@/hooks/useSound';
 
+const dailyMessages = [
+  'Cada momento nos acerca más',
+  'Nuestro amor crece con cada día que pasa',
+  'Cuento los días para volver a verte',
+  'La distancia no importa cuando alguien lo significa todo',
+  'Siempre vales la espera',
+  'El tiempo vuela cuando pienso en ti',
+  'Cada día es un paso más hacia nuestro para siempre',
+];
+
 const CountdownTimer = () => {
   const [targetDate, setTargetDate] = useState(() => {
     const saved = localStorage.getItem('countdownTarget');
@@ -14,15 +24,6 @@ const CountdownTimer = () => {
   const [dailyMessage, setDailyMessage] = useState('');
   const { playSound } = useSound();
 
-  const dailyMessages = [
-    "Every moment brings us closer together",
-    "Our love grows stronger with each passing day",
-    "I'm counting down to see you again",
-    "Distance means nothing when someone means everything",
-    "You're worth the wait, always",
-    "Time flies when I'm thinking of you",
-    "Each day is one step closer to forever",
-  ];
 
   useEffect(() => {
     if (targetDate) {
@@ -90,10 +91,10 @@ const CountdownTimer = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl md:text-6xl font-heavy text-primary mb-4">
-            Countdown to Our Special Day
+            Cuenta regresiva para nuestro día especial
           </h1>
           <p className="text-muted-foreground font-serif-italic text-lg mb-12">
-            {dailyMessage || 'Set a date to start counting down'}
+            {dailyMessage || 'Elige una fecha para comenzar la cuenta regresiva'}
           </p>
         </motion.div>
 
@@ -105,7 +106,7 @@ const CountdownTimer = () => {
             className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-elevated max-w-md mx-auto"
           >
             <label className="block text-left mb-4">
-              <span className="text-foreground font-medium mb-2 block">Select Target Date</span>
+              <span className="text-foreground font-medium mb-2 block">Selecciona la fecha objetivo</span>
               <input
                 type="datetime-local"
                 value={targetDate}
@@ -126,10 +127,10 @@ const CountdownTimer = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              <TimeUnit value={timeLeft.days} label="Days" />
-              <TimeUnit value={timeLeft.hours} label="Hours" />
-              <TimeUnit value={timeLeft.minutes} label="Minutes" />
-              <TimeUnit value={timeLeft.seconds} label="Seconds" />
+              <TimeUnit value={timeLeft.days} label="Días" />
+              <TimeUnit value={timeLeft.hours} label="Horas" />
+              <TimeUnit value={timeLeft.minutes} label="Minutos" />
+              <TimeUnit value={timeLeft.seconds} label="Segundos" />
             </motion.div>
 
             <motion.button
@@ -143,7 +144,7 @@ const CountdownTimer = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Reset Countdown
+              Reiniciar cuenta regresiva
             </motion.button>
           </>
         )}
