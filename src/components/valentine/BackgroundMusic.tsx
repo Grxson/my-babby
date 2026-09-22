@@ -161,6 +161,7 @@ const BackgroundMusic = ({ isActive, vibe = 'romantic' }: BackgroundMusicProps) 
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       title={isMuted ? 'Activar música' : 'Silenciar música'}
+      aria-label={isMuted ? 'Activar música' : 'Silenciar música'}
     >
       <svg
         width="24"
