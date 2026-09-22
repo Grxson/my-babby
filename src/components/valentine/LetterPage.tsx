@@ -56,9 +56,9 @@ const LetterPage = ({ onComplete }: LetterPageProps) => {
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-3xl md:text-4xl font-serif-italic text-foreground">
-          Gigi, this is for you.
+          Esto es para ti.
         </h2>
-        <p className="text-muted-foreground mt-2">Scratch to reveal what's inside.</p>
+        <p className="text-muted-foreground mt-2">Raspa para descubrir lo que hay dentro.</p>
       </motion.div>
 
       {/* Scratch Card */}
@@ -74,11 +74,10 @@ const LetterPage = ({ onComplete }: LetterPageProps) => {
         >
           <div className="text-center space-y-4">
             <h2 className="text-2xl font-serif-italic text-foreground">
-              Hi, Babby!,
+              Hola, cariño.
             </h2>
             <p className="text-foreground/90 leading-relaxed text-sm italic px-2">
-              'it's almost valentines day,
-              this is my small surprise for you and i hope you'll like it baby,"
+              Se acerca San Valentín. Esta es una pequeña sorpresa para ti; espero que te guste.
             </p>
 
             <motion.div
@@ -101,15 +100,15 @@ const LetterPage = ({ onComplete }: LetterPageProps) => {
       >
         {revealProgress < 85 ? (
           <div className="text-center">
-            <p>Keep scratching... {Math.round(revealProgress)}% revealed</p>
-            <p className="text-xs mt-1 text-muted-foreground/70">Need 85% to continue</p>
+            <p>Sigue raspando... {Math.round(revealProgress)}% revelado</p>
+            <p className="text-xs mt-1 text-muted-foreground/70">Necesitas el 85% para continuar</p>
           </div>
         ) : (
           <div className="flex items-center gap-2 text-primary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="hsl(145, 40%, 55%)">
               <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z" />
             </svg>
-            <span>Message revealed!</span>
+            <span>¡Mensaje revelado!</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="hsl(145, 40%, 55%)">
               <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z" />
             </svg>
@@ -131,7 +130,7 @@ const LetterPage = ({ onComplete }: LetterPageProps) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <span>Continue</span>
+          <span>Continuar</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>

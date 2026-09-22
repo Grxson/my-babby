@@ -58,7 +58,7 @@ const ClosingPage = ({ onReplay }: ClosingPageProps) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          With love,
+          Con cariño,
         </motion.h2>
 
         <motion.h1
@@ -85,7 +85,7 @@ const ClosingPage = ({ onReplay }: ClosingPageProps) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 2.3 }}
         >
-          "u r just a babby. i hope u loved it :3."
+          "Espero que hayas disfrutado esta pequeña sorpresa."
         </motion.p>
 
         {/* Sparkles decoration */}
@@ -129,7 +129,7 @@ const ClosingPage = ({ onReplay }: ClosingPageProps) => {
           whileHover={{ scale: 1.05 }}
         >
           <ReplayIcon size={20} color="currentColor" animate />
-          <span className="font-serif-italic">Replay from the beginning</span>
+          <span className="font-serif-italic">Repetir desde el principio</span>
         </motion.button>
       </motion.div>
 

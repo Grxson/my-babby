@@ -29,7 +29,7 @@ const LockPage = ({ onComplete, onAccessGranted }: LockPageProps) => {
             setView('form');
             setCountdown(10);
             setErrorCount(0);
-            setHint('RE-INITIALIZING...');
+            setHint('REINICIANDO...');
         }
     }, [view, countdown]);
 
@@ -53,9 +53,9 @@ const LockPage = ({ onComplete, onAccessGranted }: LockPageProps) => {
             if (newErrorCount >= 4) {
                 setView('restricted');
             } else {
-                if (newErrorCount === 1) setHint('IDENTITY_UNVERIFIED');
-                else if (newErrorCount === 2) setHint('HINT: PERSONAL_NICKNAME');
-                else if (newErrorCount === 3) setHint('CRITICAL: LAST_ATTEMPT');
+                if (newErrorCount === 1) setHint('IDENTIDAD_NO_VERIFICADA');
+                else if (newErrorCount === 2) setHint('PISTA: APODO_PERSONAL');
+                else if (newErrorCount === 3) setHint('CRÍTICO: ÚLTIMO_INTENTO');
             }
 
             setTimeout(() => setIsPanicking(false), 800);
@@ -104,12 +104,12 @@ const LockPage = ({ onComplete, onAccessGranted }: LockPageProps) => {
                     >
                         <div className="space-y-12">
                             <h1 className="text-6xl sm:text-7xl md:text-9xl font-black text-white tracking-tighter leading-none m-0">
-                                ACCESS <br />
-                                <span className={isPanicking ? 'text-red-500 transition-colors' : 'text-white/10 transition-colors'}>REQUIRED</span>
+                                ACCESO <br />
+                                <span className={isPanicking ? 'text-red-500 transition-colors' : 'text-white/10 transition-colors'}>REQUERIDO</span>
                             </h1>
 
                             <p className="text-3xl md:text-4xl text-white/50 font-serif-italic max-w-2xl mx-auto leading-relaxed">
-                                Are you <span className="text-white border-b-2 border-white/40 px-3 break-all transition-all duration-300">{name || ''}</span>?
+                                ¿Eres <span className="text-white border-b-2 border-white/40 px-3 break-all transition-all duration-300">{name || ''}</span>?
                             </p>
                         </div>
 
@@ -120,7 +120,7 @@ const LockPage = ({ onComplete, onAccessGranted }: LockPageProps) => {
                                     type="text"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
-                                    placeholder="TYPE YOUR NAME"
+                                    placeholder="ESCRIBE TU NOMBRE"
                                     className={`w-full bg-transparent border-b-2 rounded-none px-4 py-8 text-4xl text-center font-mono tracking-widest text-white focus:outline-none transition-all duration-300 ${isPanicking ? 'border-red-600' : 'border-white/10 focus:border-white'
                                         }`}
                                     autoFocus
@@ -149,7 +149,7 @@ const LockPage = ({ onComplete, onAccessGranted }: LockPageProps) => {
                                     type="submit"
                                     className="px-12 py-5 bg-white text-black font-black text-xs tracking-[0.4em] hover:bg-white/90 transition-colors shadow-2xl"
                                 >
-                                    CONTINUE
+                                    CONTINUAR
                                 </motion.button>
                             )}
                         </form>
@@ -163,11 +163,11 @@ const LockPage = ({ onComplete, onAccessGranted }: LockPageProps) => {
                         animate={{ opacity: 1 }}
                         className="text-center space-y-8 z-10"
                     >
-                        <h2 className="text-7xl md:text-9xl font-black text-red-600 tracking-tighter">LOCKED</h2>
+                        <h2 className="text-7xl md:text-9xl font-black text-red-600 tracking-tighter">BLOQUEADO</h2>
                         <div className="text-5xl font-mono font-bold text-white/20 italic">
                             {countdown}s
                         </div>
-                        <p className="text-white/30 text-[10px] font-mono tracking-[0.4em] uppercase">Security Penalty: Cool-down in progress</p>
+                        <p className="text-white/30 text-[10px] font-mono tracking-[0.4em] uppercase">Penalización de seguridad: espera en curso</p>
                     </motion.div>
                 )}
 
@@ -187,13 +187,13 @@ const LockPage = ({ onComplete, onAccessGranted }: LockPageProps) => {
                             >
                                 <div className="h-1 w-20 bg-primary mb-12" />
                                 <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-none">
-                                    ACCESS <br />
-                                    <span className="text-primary italic">GRANTED</span>
+                                    ACCESO <br />
+                                    <span className="text-primary italic">CONCEDIDO</span>
                                 </h2>
 
                                 <div className="space-y-4">
-                                    <p className="text-3xl text-white font-serif-italic">Hi, <span className="underline decoration-primary underline-offset-8">{name}!</span></p>
-                                    <p className="text-white/30 text-xs font-mono tracking-[0.3em] uppercase">Identity confirmed.</p>
+                                    <p className="text-3xl text-white font-serif-italic">Hola, <span className="underline decoration-primary underline-offset-8">{name}!</span></p>
+                                    <p className="text-white/30 text-xs font-mono tracking-[0.3em] uppercase">Identidad confirmada.</p>
                                 </div>
                             </motion.div>
 
@@ -209,8 +209,8 @@ const LockPage = ({ onComplete, onAccessGranted }: LockPageProps) => {
 
                                 <div className="rounded-none overflow-hidden shadow-[0_0_80px_rgba(255,255,255,0.05)] border-4 border-white translate-y-0">
                                     <img
-                                        src="/gigi/gigi main.png"
-                                        alt="Gigi"
+                                        src="/placeholder-recuerdo.svg"
+                                        alt="Marcador de recuerdo privado"
                                         className="w-full h-auto object-cover"
                                     />
                                 </div>

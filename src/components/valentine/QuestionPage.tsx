@@ -21,13 +21,13 @@ const QuestionPage = ({ onComplete }: QuestionPageProps) => {
   const { playSound } = useSound();
 
   const noMessages = [
-    "ay di moko love?",
-    "say yes na please",
-    "hmp wala ka kithes",
-    "wala ka nang cuddle nakie nyajn",
-    "AAAAAAAAAAAA SURE KANA?",
-    "wawa ako nyan po",
-    "PRESS YES BAAAAA!!"
+    "¿Seguro que no?",
+    "Di que sí, por favor.",
+    "Vamos, inténtalo otra vez.",
+    "El botón se está escapando.",
+    "¿DE VERDAD ESTÁS SEGURA?",
+    "Yo seguiré esperando.",
+    "¡PULSA SÍ!"
   ];
 
 
@@ -120,7 +120,7 @@ const QuestionPage = ({ onComplete }: QuestionPageProps) => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1 }}
               >
-                So, Gigi, I have one last question.
+                Tengo una última pregunta para ti.
               </motion.p>
 
               <motion.h2
@@ -136,7 +136,7 @@ const QuestionPage = ({ onComplete }: QuestionPageProps) => {
                   repeat: Infinity
                 } : { delay: 1.5, duration: 0.8 }}
               >
-                Will you be my Valentine?
+                ¿Quieres ser mi San Valentín?
               </motion.h2>
 
               {/* Dudu reaction on No clicks */}
@@ -151,7 +151,7 @@ const QuestionPage = ({ onComplete }: QuestionPageProps) => {
                     <motion.img
                       key={noGifIndex}
                       src={`/dudu/${noGifIndex}.gif`}
-                      alt={`Dudu reaction ${noGifIndex}`}
+                      alt={`Reacción animada ${noGifIndex}`}
                       className="w-56 h-56 md:w-72 md:h-72 object-contain"
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
@@ -195,7 +195,7 @@ const QuestionPage = ({ onComplete }: QuestionPageProps) => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <span className="flex items-center gap-2">
-                    Yes
+                    Sí
                     <HeartIcon size={18} color="white" />
                   </span>
                 </motion.button>
@@ -274,11 +274,11 @@ const QuestionPage = ({ onComplete }: QuestionPageProps) => {
             </motion.div>
 
             <h2 className="text-3xl md:text-4xl font-serif-italic text-white mb-6">
-              Thank you, Babby.
+              Gracias, cariño.
             </h2>
 
             <p className="text-xl text-white/80">
-              I love you so much.
+              Te quiero muchísimo.
             </p>
           </motion.div>
         )}

@@ -44,7 +44,7 @@ const EnvelopePage = ({ onComplete }: EnvelopePageProps) => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          A Letter For You
+          Una carta para ti
         </motion.h1>
 
         <motion.p
@@ -53,7 +53,7 @@ const EnvelopePage = ({ onComplete }: EnvelopePageProps) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
-          I wrote something special, Gigi
+          Escribí algo especial para ti
         </motion.p>
       </motion.div>
 
@@ -88,7 +88,7 @@ const EnvelopePage = ({ onComplete }: EnvelopePageProps) => {
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            This envelope holds my heart
+            Este sobre guarda mi corazón
           </motion.p>
         )}
         {clickCount === 1 && (
@@ -98,7 +98,7 @@ const EnvelopePage = ({ onComplete }: EnvelopePageProps) => {
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            One more click to read my words...
+            Un clic más para leer mis palabras...
           </motion.p>
         )}
         {clickCount === 2 && (
@@ -107,7 +107,7 @@ const EnvelopePage = ({ onComplete }: EnvelopePageProps) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
           >
-            Let me show you what's inside...
+            Déjame mostrarte lo que hay dentro...
           </motion.p>
         )}
       </motion.div>

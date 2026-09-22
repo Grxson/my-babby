@@ -25,7 +25,7 @@ const ErrorPage = ({ onComplete }: ErrorPageProps) => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        HOME
+        INICIO
       </motion.button>
       
       {/* Glitch lines */}
@@ -99,7 +99,7 @@ const ErrorPage = ({ onComplete }: ErrorPageProps) => {
             letterSpacing: '-0.04em'
           }}
         >
-          SOMETHING WENT WRONG
+          ALGO SALIÓ MAL
         </motion.h1>
         
         {/* Error badge */}
@@ -113,7 +113,7 @@ const ErrorPage = ({ onComplete }: ErrorPageProps) => {
             404 ERROR
           </span>
           <span className="text-white/50 text-sm tracking-wider">
-            PAGE NOT FOUND
+            PÁGINA NO ENCONTRADA
           </span>
         </motion.div>
       </motion.div>
@@ -131,7 +131,7 @@ const ErrorPage = ({ onComplete }: ErrorPageProps) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 2.5 }}
         >
-          But wait, <span className="text-[hsl(145,50%,60%)]">Gigi</span>...
+          Pero espera... <span className="text-[hsl(145,50%,60%)]">hay algo para ti</span>.
         </motion.p>
         
         <motion.p
@@ -140,7 +140,7 @@ const ErrorPage = ({ onComplete }: ErrorPageProps) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 3 }}
         >
-          I have something for you
+          Tengo una sorpresa para ti
         </motion.p>
         
         <motion.button
@@ -156,7 +156,7 @@ const ErrorPage = ({ onComplete }: ErrorPageProps) => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.95 }}
         >
-          <span className="relative z-10">OPEN YOUR SURPRISE</span>
+          <span className="relative z-10">ABRE TU SORPRESA</span>
           <motion.div
             className="absolute inset-0 bg-[hsl(145,50%,60%)]"
             initial={{ x: '-100%' }}
@@ -168,7 +168,7 @@ const ErrorPage = ({ onComplete }: ErrorPageProps) => {
             whileHover={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
-            OPEN YOUR SURPRISE
+            ABRE TU SORPRESA
           </motion.span>
         </motion.button>
       </motion.div>

@@ -16,7 +16,10 @@ class MusicGenerator {
 
   private getAudioContext(): AudioContext {
     if (!this.audioContext) {
-      this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const AudioContextConstructor = window.AudioContext || (window as typeof window & {
+              webkitAudioContext?: typeof AudioContext;
+            }).webkitAudioContext;
+            this.audioContext = new AudioContextConstructor();
     }
     return this.audioContext;
   }
@@ -122,7 +125,9 @@ class MusicGenerator {
       try {
         osc.stop();
         osc.disconnect();
-      } catch (e) { }
+      } catch {
+        // The oscillator may have already stopped.
+      }
     });
     this.oscillators = [];
   }
@@ -155,7 +160,7 @@ const BackgroundMusic = ({ isActive, vibe = 'romantic' }: BackgroundMusicProps) 
       animate={{ opacity: 1, scale: 1 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      title={isMuted ? 'Unmute music' : 'Mute music'}
+      title={isMuted ? 'Activar música' : 'Silenciar música'}
     >
       <svg
         width="24"

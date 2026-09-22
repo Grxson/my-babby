@@ -47,7 +47,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
           animate={{ scale: 1 }}
           transition={{ delay: 0.3 }}
         >
-          My Flower For You
+          Flores para ti
         </motion.h1>
         <motion.p
           className="text-lg text-muted-foreground font-serif-italic"
@@ -55,7 +55,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
-          These flowers bloom just for you, Gigi
+          Estas flores florecen solo para ti
         </motion.p>
       </motion.div>
       
@@ -82,7 +82,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 2.5 }}
           >
-            Tulip
+            Tulipán
           </motion.p>
           <motion.p
             className="text-sm text-muted-foreground mt-2"
@@ -90,7 +90,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 2.7 }}
           >
-            Your most favorite flower. Although u have lots of favorites, somehow it's Gigi's trademark. Tulips always remind me of your warmth. Just like how the sun radiates in your eyes, ahahaha, you look so beautiful. Being with you feels like coming home, always.
+            Los tulipanes me recuerdan la calidez de los momentos que compartimos. Estar contigo siempre se siente como volver a casa.
           </motion.p>
         </motion.div>
         
@@ -109,7 +109,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 3 }}
           >
-            Daisy
+            Margarita
           </motion.p>
           <motion.p
             className="text-sm text-muted-foreground mt-2"
@@ -117,7 +117,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 3.2 }}
           >
-            It's my favorite flower and I always get them from you. I actually don't have a particular favorite in mind, but ever since we talked, all I could ever think of is daisy. Also, we did say we'll always try for each other. As for me, I'll be welcoming new beginnings of me to do better. That's why I love daisies, as they also mean new beginnings. Every daisy from you reminds me of your thoughtfulness. They make me feel loved in a way that words cannot fully capture.
+            Las margaritas hablan de nuevos comienzos y de intentarlo una y otra vez. Me recuerdan lo valiosos que son los pequeños detalles.
           </motion.p>
         </motion.div>
         
@@ -137,7 +137,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 3.5 }}
           >
-            Lily
+            Lirio
           </motion.p>
           <motion.p
             className="text-sm text-muted-foreground mt-2"
@@ -145,7 +145,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 3.7 }}
           >
-            This is your new favorite. I kept giving em to you, as they are as pretty as u :3 This is a Gigi flower and, aside from tulips, u r the only one in mind that comes across. Lilies feel delicate yet strong, just like you. I love how they reflect your beauty and I just cant explain u look so UGHHHH ESPECIALLY IF MAG FT TAYO! I love lilies din kasi pang bading yan na flower ehahahah anws. Every time I see them, I think of how lucky I am to have you in my life.
+            Los lirios son delicados y fuertes a la vez. Cada vez que los veo, recuerdo la suerte de compartir este camino contigo.
           </motion.p>
         </motion.div>
         
@@ -165,7 +165,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 4 }}
           >
-            4-Leaf Clover
+            Trébol de cuatro hojas
           </motion.p>
           <motion.p
             className="text-sm text-muted-foreground mt-2"
@@ -173,7 +173,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 4.2 }}
           >
-            4 is our number, baby, and you are the lucky charm of my life. With your good soul and energy, it gives me hope and luck to do better each day. Finding you feels like finding a rare treasure. You make everything brighter just by being in my life. I feel protected and inspired whenever I'm with you. Having you is the kind of luck that I never thought was real.
+            Un trébol de cuatro hojas representa la suerte de encontrar algo extraordinario. Haces que cada día sea un poco más brillante.
           </motion.p>
         </motion.div>
       </motion.div>
@@ -186,7 +186,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
         transition={{ delay: 4.5 }}
       >
         <p className="text-foreground/90 font-serif-italic text-lg leading-relaxed">
-          Like these flowers, my love for you grows stronger each day, blooming more beautiful with every moment we share.
+          Como estas flores, el cariño crece cada día y florece en cada momento compartido.
         </p>
       </motion.div>
       
@@ -204,7 +204,7 @@ const FlowerPage = ({ onComplete }: FlowerPageProps) => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <span>Continue</span>
+        <span>Continuar</span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M5 12h14M12 5l7 7-7 7" />
         </svg>
